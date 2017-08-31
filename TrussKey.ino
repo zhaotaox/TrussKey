@@ -7,8 +7,9 @@ void setup(){
   pinMode(solenoid_Pin,OUTPUT);
   pinMode(led1,OUTPUT);
   pinMode(led2,OUTPUT);
+  pinMode(13,OUTPUT);
   pinMode(pwrPin,INPUT);
-  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
+  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,LOW);
 }
 
 void loop()
@@ -17,6 +18,7 @@ void loop()
   // providing enough warmup time for readings to stabilize
 
   //int reading = digitalRead(pwrPin);
+  digitalWrite(13,state);
   if (digitalRead(pwrPin)){
     readingCounter++;
     Serial.print("Reading counter");
@@ -50,7 +52,7 @@ void loop()
     }
     delay(500);
   }
-  //powerOn = 1;
+  powerOn = 1;
 
   /*After power is on*/
   if (powerOn){
@@ -137,6 +139,7 @@ void loop()
 void det_SW()
 {
   /*Initiate GPRS*/
+  /*
   for (;;) {
     while (!gprs.init()) {
     }
@@ -153,5 +156,8 @@ void det_SW()
   }
 
   smsSent = gprs.sendSMS(smsNum,smsMSG);
+  */
+  state = !state;
+  Serial.print("Det Tampered\n");
 }
 
