@@ -1,6 +1,26 @@
 #include "TrussKey.h"
 
 
+// connected to the output pin of MQ3 
+int mq3_analogPin = A2; 
+int solenoid_Pin = 9;
+int led1 = 5;
+int led2 = 3;
+const int pwrPin = 6;  
+int detSW_Pin = 3;
+
+
+/*Variables used for MQ303 sensor*/
+int timer = 0;
+int base_val = 0;
+int max_val = 0;
+int diff = 0;
+int passed = 1;
+volatile int powerOn = 0;
+int readingCounter = 0;
+
+volatile byte state = LOW;
+
 void setup(){
   Serial.begin(9600); // open serial at 9600 bps
   pinMode(mq3_analogPin,INPUT);
@@ -31,10 +51,10 @@ void loop()
     if (powerOn == 0){
       //powerOn = 1;
       if (readingCounter % 2 == 1){
-        powerTimer = millis();
-        Serial.println(powerTimer);
-        Serial.println(longPressActive);
-        Serial.println(millis() - powerTimer);
+        //powerTimer = millis();
+        //Serial.println(powerTimer);
+        //Serial.println(longPressActive);
+        //Serial.println(millis() - powerTimer);
         digitalWrite(led1,HIGH);
         powerOn = 1;
       }
@@ -157,7 +177,10 @@ void det_SW()
 
   smsSent = gprs.sendSMS(smsNum,smsMSG);
   */
+  /*
   state = !state;
   Serial.print("Det Tampered\n");
+  */
+  //SendGPRS();
 }
 
