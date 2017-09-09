@@ -1,5 +1,24 @@
 #include "TrussKey.h"
 
+#include "SIM800.h"
+
+#define APN "connect"
+
+/*GPRS module variables*/
+char* smsMSG = "TrussKey is being tampered\032";
+char* smsNum = "+14125195973";
+CGPRS_SIM800 gprs;
+uint32_t count = 0;
+uint32_t errors = 0;
+int smsSent;
+
+
+
+
+
+
+
+
 
 // connected to the output pin of MQ3 
 int mq3_analogPin = A2; 
@@ -29,7 +48,9 @@ void setup(){
   pinMode(led2,OUTPUT);
   pinMode(13,OUTPUT);
   pinMode(pwrPin,INPUT);
-  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,LOW);
+  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
+  Serial.println("Start Set up");
+  //SendGPRS();
 }
 
 void loop()
@@ -181,6 +202,15 @@ void det_SW()
   state = !state;
   Serial.print("Det Tampered\n");
   */
+  gprs.init();
+  Serial.println("OK");
+  byte ret = gprs.setup(APN);
+  Serial.print("Det Tampered\n");
   //SendGPRS();
+  Serial.println("Send Text");
+  delay(1000);  
+  char mydata[16];
+  sprintf(mydata, "t=%lu", millis());
+  smsSent = gprs.sendSMS(smsNum,smsMSG);
 }
 
