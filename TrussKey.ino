@@ -1,44 +1,5 @@
 #include "TrussKey.h"
 
-#include "SIM800.h"
-
-#define APN "connect"
-
-/*GPRS module variables*/
-char* smsMSG = "TrussKey is being tampered\032";
-char* smsNum = "+14125195973";
-CGPRS_SIM800 gprs;
-uint32_t count = 0;
-uint32_t errors = 0;
-int smsSent;
-
-
-
-
-
-
-
-
-
-// connected to the output pin of MQ3 
-int mq3_analogPin = A2; 
-int solenoid_Pin = 9;
-int led1 = 5;
-int led2 = 3;
-const int pwrPin = 6;  
-int detSW_Pin = 3;
-
-
-/*Variables used for MQ303 sensor*/
-int timer = 0;
-int base_val = 0;
-int max_val = 0;
-int diff = 0;
-int passed = 1;
-volatile int powerOn = 0;
-int readingCounter = 0;
-
-volatile byte state = LOW;
 
 void setup(){
   Serial.begin(9600); // open serial at 9600 bps
@@ -48,9 +9,7 @@ void setup(){
   pinMode(led2,OUTPUT);
   pinMode(13,OUTPUT);
   pinMode(pwrPin,INPUT);
-  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
-  Serial.println("Start Set up");
-  //SendGPRS();
+  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,LOW);
 }
 
 void loop()
@@ -72,10 +31,10 @@ void loop()
     if (powerOn == 0){
       //powerOn = 1;
       if (readingCounter % 2 == 1){
-        //powerTimer = millis();
-        //Serial.println(powerTimer);
-        //Serial.println(longPressActive);
-        //Serial.println(millis() - powerTimer);
+        powerTimer = millis();
+        Serial.println(powerTimer);
+        Serial.println(longPressActive);
+        Serial.println(millis() - powerTimer);
         digitalWrite(led1,HIGH);
         powerOn = 1;
       }
@@ -180,7 +139,8 @@ void loop()
 void det_SW()
 {
   /*Initiate GPRS*/
-  /*
+  interrupts();
+  
   for (;;) {
     while (!gprs.init()) {
     }
@@ -197,20 +157,8 @@ void det_SW()
   }
 
   smsSent = gprs.sendSMS(smsNum,smsMSG);
-  */
-  /*
-  state = !state;
-  Serial.print("Det Tampered\n");
-  */
-  gprs.init();
-  Serial.println("OK");
-  byte ret = gprs.setup(APN);
-  Serial.print("Det Tampered\n");
-  //SendGPRS();
-  Serial.println("Send Text");
-  delay(1000);  
-  char mydata[16];
-  sprintf(mydata, "t=%lu", millis());
-  smsSent = gprs.sendSMS(smsNum,smsMSG);
+  
+  //state = !state;
+  //Serial.print("Det Tampered\n");
 }
 
