@@ -13209,35 +13209,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <rectangle x1="-3.7018" y1="0.2046" x2="-2.9517" y2="2.8045" layer="51"/>
 <rectangle x1="1.9517" y1="0.1955" x2="2.7018" y2="2.7954" layer="51"/>
 </package>
-<package name="MSOP8">
-<wire x1="-1.48" y1="1.23" x2="-1.23" y2="1.48" width="0.1524" layer="21" curve="-90" cap="flat"/>
-<wire x1="1.23" y1="1.48" x2="1.48" y2="1.23" width="0.1524" layer="21" curve="-90"/>
-<wire x1="1.23" y1="-1.49" x2="1.48" y2="-1.24" width="0.1524" layer="21" curve="90"/>
-<wire x1="-1.48" y1="-1.24" x2="-1.23" y2="-1.49" width="0.1524" layer="21" curve="90" cap="flat"/>
-<wire x1="1.24" y1="-1.49" x2="-1.22" y2="-1.49" width="0.1524" layer="21"/>
-<wire x1="-1.22" y1="1.48" x2="1.24" y2="1.48" width="0.1524" layer="21"/>
-<wire x1="-1.48" y1="1.23" x2="-1.48" y2="-1.23" width="0.1524" layer="21"/>
-<wire x1="1.48" y1="-1.24" x2="1.48" y2="1.23" width="0.1524" layer="21"/>
-<circle x="-0.65" y="-0.65" radius="0.325" width="0.254" layer="21"/>
-<smd name="1" x="-0.975" y="-2.25" dx="0.4" dy="1.1" layer="1"/>
-<smd name="2" x="-0.325" y="-2.25" dx="0.4" dy="1.1" layer="1"/>
-<smd name="3" x="0.325" y="-2.25" dx="0.4" dy="1.1" layer="1"/>
-<smd name="4" x="0.975" y="-2.25" dx="0.4" dy="1.1" layer="1"/>
-<smd name="5" x="0.975" y="2.25" dx="0.4" dy="1.1" layer="1"/>
-<smd name="6" x="0.325" y="2.25" dx="0.4" dy="1.1" layer="1"/>
-<smd name="7" x="-0.325" y="2.25" dx="0.4" dy="1.1" layer="1"/>
-<smd name="8" x="-0.975" y="2.25" dx="0.4" dy="1.1" layer="1"/>
-<text x="-2.54" y="-1.27" size="0.4064" layer="25" rot="R90">&gt;NAME</text>
-<text x="2.54" y="-1.27" size="0.4064" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-1.175" y1="-2.45" x2="-0.775" y2="-1.55" layer="51"/>
-<rectangle x1="-0.525" y1="-2.45" x2="-0.125" y2="-1.55" layer="51"/>
-<rectangle x1="0.125" y1="-2.45" x2="0.525" y2="-1.55" layer="51"/>
-<rectangle x1="0.775" y1="-2.45" x2="1.175" y2="-1.55" layer="51"/>
-<rectangle x1="0.775" y1="1.55" x2="1.175" y2="2.45" layer="51"/>
-<rectangle x1="0.125" y1="1.55" x2="0.525" y2="2.45" layer="51"/>
-<rectangle x1="-0.525" y1="1.55" x2="-0.125" y2="2.45" layer="51"/>
-<rectangle x1="-1.175" y1="1.55" x2="-0.775" y2="2.45" layer="51"/>
-</package>
 </packages>
 <symbols>
 <symbol name="LC70923F">
@@ -13298,22 +13269,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <rectangle x1="-2.032" y1="-1.016" x2="2.032" y2="-0.508" layer="94"/>
 <pin name="1" x="0" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
 <pin name="2" x="0" y="-5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
-</symbol>
-<symbol name="SC4501">
-<wire x1="-10.16" y1="12.7" x2="10.16" y2="12.7" width="0.254" layer="94"/>
-<wire x1="10.16" y1="12.7" x2="10.16" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-12.7" x2="-10.16" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-12.7" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
-<pin name="COMP" x="-15.24" y="10.16" length="middle"/>
-<pin name="FB" x="-15.24" y="2.54" length="middle"/>
-<pin name="/SHDN" x="-15.24" y="-2.54" length="middle"/>
-<pin name="GND" x="-15.24" y="-10.16" length="middle"/>
-<pin name="SS" x="15.24" y="10.16" length="middle" rot="R180"/>
-<pin name="ROSC" x="15.24" y="2.54" length="middle" rot="R180"/>
-<pin name="IN" x="15.24" y="-2.54" length="middle" rot="R180"/>
-<pin name="SW" x="15.24" y="-10.16" length="middle" rot="R180"/>
-<text x="-10.16" y="15.24" size="1.778" layer="94">&gt;NAME</text>
-<text x="-10.16" y="-17.78" size="1.778" layer="94">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -13400,29 +13355,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <connects>
 <connect gate="C1" pin="1" pad="1"/>
 <connect gate="C1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="SC4501" prefix="U">
-<description>Boost Regulator  3.7V -&gt; 5V</description>
-<gates>
-<gate name="U1" symbol="SC4501" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="MSOP8">
-<connects>
-<connect gate="U1" pin="/SHDN" pad="3"/>
-<connect gate="U1" pin="COMP" pad="1"/>
-<connect gate="U1" pin="FB" pad="2"/>
-<connect gate="U1" pin="GND" pad="4"/>
-<connect gate="U1" pin="IN" pad="6"/>
-<connect gate="U1" pin="ROSC" pad="7"/>
-<connect gate="U1" pin="SS" pad="8"/>
-<connect gate="U1" pin="SW" pad="5"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -13753,10 +13685,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <part name="C4" library="NewPart" deviceset="TANT-CAP" device="" value="100uF"/>
 <part name="C3" library="microbuilder" deviceset="CAP_CERAMIC" device="0805-NOOUTLINE" value="10µF"/>
 <part name="U$15" library="microbuilder" deviceset="GND" device=""/>
-<part name="L2" library="NewPart" deviceset="CDRH5D28" device=""/>
-<part name="U3" library="NewPart" deviceset="LC709203" device=""/>
-<part name="U5" library="NewPart" deviceset="SC4501" device=""/>
-<part name="C5" library="NewPart" deviceset="TANT-CAP" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -13814,10 +13742,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <instance part="C4" gate="C1" x="162.56" y="33.02"/>
 <instance part="C3" gate="G$1" x="119.38" y="76.2"/>
 <instance part="U$15" gate="G$1" x="119.38" y="68.58"/>
-<instance part="L2" gate="L1" x="40.64" y="-10.16"/>
-<instance part="U3" gate="U1" x="78.74" y="-12.7"/>
-<instance part="U5" gate="U1" x="116.84" y="-12.7"/>
-<instance part="C5" gate="C1" x="35.56" y="-22.86"/>
 </instances>
 <busses>
 </busses>

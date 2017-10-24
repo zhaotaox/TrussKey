@@ -12902,6 +12902,18 @@ wave soldering</description>
 <rectangle x1="0.7" y1="0.85" x2="1.2" y2="1.5" layer="51"/>
 <rectangle x1="-1.2" y1="0.85" x2="-0.7" y2="1.5" layer="51"/>
 </package>
+<package name="LS12T2-T">
+<smd name="P$2" x="0" y="1.39" dx="1.1" dy="0.7" layer="1"/>
+<smd name="P$1" x="0.05" y="-1.41" dx="1.1" dy="0.7" layer="1"/>
+<smd name="P$3" x="-0.2" y="0" dx="1.4" dy="1.1" layer="1"/>
+<hole x="1.35" y="-1.825" drill="0.6"/>
+<hole x="1.35" y="1.825" drill="0.6"/>
+<wire x1="0" y1="0" x2="0" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="0" y1="-1.95" x2="1.95" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="1.95" y1="-1.95" x2="1.95" y2="1.95" width="0.127" layer="21"/>
+<wire x1="1.95" y1="1.95" x2="0" y2="1.95" width="0.127" layer="21"/>
+<wire x1="0" y1="1.95" x2="0" y2="0.025" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="ABM3-16MHZ">
@@ -12962,6 +12974,23 @@ wave soldering</description>
 <pin name="FB" x="10.16" y="-5.08" length="short" direction="pas" rot="R180"/>
 <pin name="SW" x="10.16" y="5.08" length="short" direction="pas" rot="R180"/>
 <pin name="GND" x="-12.7" y="-5.08" length="short" direction="pwr"/>
+</symbol>
+<symbol name="LS12T2-T">
+<wire x1="0" y1="1.905" x2="0" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-4.445" y1="1.905" x2="-3.175" y2="1.905" width="0.254" layer="94"/>
+<wire x1="-4.445" y1="-1.905" x2="-3.175" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="-4.445" y1="1.905" x2="-4.445" y2="0" width="0.254" layer="94"/>
+<wire x1="-4.445" y1="0" x2="-4.445" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.905" y2="0" width="0.1524" layer="94"/>
+<wire x1="-1.27" y1="0" x2="-0.635" y2="0" width="0.1524" layer="94"/>
+<wire x1="-4.445" y1="0" x2="-3.175" y2="0" width="0.1524" layer="94"/>
+<wire x1="0" y1="-2.54" x2="-1.27" y2="1.905" width="0.254" layer="94"/>
+<circle x="0" y="-2.54" radius="0.127" width="0.4064" layer="94"/>
+<circle x="0" y="2.54" radius="0.127" width="0.4064" layer="94"/>
+<text x="-6.35" y="-2.54" size="1.778" layer="95" rot="R90">&gt;NAME</text>
+<text x="-3.81" y="3.175" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="S1" x="0" y="-5.08" visible="pad" length="short" direction="pas" swaplevel="2" rot="R90"/>
+<pin name="S2" x="0" y="5.08" visible="pad" length="short" direction="pas" swaplevel="1" rot="R270"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -13029,6 +13058,23 @@ wave soldering</description>
 <connect gate="U1" pin="GND" pad="2"/>
 <connect gate="U1" pin="IN" pad="1"/>
 <connect gate="U1" pin="SW" pad="5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LS12T2-T" prefix="SW">
+<description>Side Switch for hardware reset</description>
+<gates>
+<gate name="G$1" symbol="LS12T2-T" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="LS12T2-T">
+<connects>
+<connect gate="G$1" pin="S1" pad="P$1"/>
+<connect gate="G$1" pin="S2" pad="P$2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -13357,6 +13403,7 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <part name="R8" library="resistor" deviceset="R-US_" device="R0402" value="10K"/>
 <part name="P+10" library="supply1" deviceset="VCC" device=""/>
 <part name="LED2" library="led" deviceset="LST-C19HE1WT" device=""/>
+<part name="SW3" library="NewPart" deviceset="LS12T2-T" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -13425,6 +13472,7 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <instance part="R8" gate="G$1" x="101.6" y="-2.54" rot="R90"/>
 <instance part="P+10" gate="VCC" x="101.6" y="10.16"/>
 <instance part="LED2" gate="G$1" x="106.68" y="-15.24"/>
+<instance part="SW3" gate="G$1" x="20.32" y="88.9" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -13566,7 +13614,12 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <segment>
 <pinref part="C3" gate="G$1" pin="1"/>
 <pinref part="GND5" gate="1" pin="GND"/>
-<wire x1="15.24" y1="81.28" x2="5.08" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="81.28" x2="10.16" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="SW3" gate="G$1" pin="S1"/>
+<wire x1="10.16" y1="81.28" x2="5.08" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="88.9" x2="10.16" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="88.9" x2="10.16" y2="81.28" width="0.1524" layer="91"/>
+<junction x="10.16" y="81.28"/>
 </segment>
 <segment>
 <pinref part="GND7" gate="1" pin="GND"/>
@@ -13727,9 +13780,14 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <net name="RST" class="0">
 <segment>
 <pinref part="C3" gate="G$1" pin="2"/>
-<wire x1="22.86" y1="81.28" x2="38.1" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="81.28" x2="30.48" y2="81.28" width="0.1524" layer="91"/>
 <label x="35.56" y="81.28" size="1.778" layer="95" rot="R90" xref="yes"/>
 <pinref part="U2" gate="U$1" pin="PC6(/RESET)"/>
+<pinref part="SW3" gate="G$1" pin="S2"/>
+<wire x1="30.48" y1="81.28" x2="38.1" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="88.9" x2="30.48" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="88.9" x2="30.48" y2="81.28" width="0.1524" layer="91"/>
+<junction x="30.48" y="81.28"/>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="VTG"/>
@@ -13787,9 +13845,9 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="J1" gate="-2" pin="MS"/>
 </segment>
 <segment>
-<pinref part="U2" gate="U$1" pin="PD6(AIN0)"/>
-<wire x1="86.36" y1="43.18" x2="93.98" y2="43.18" width="0.1524" layer="91"/>
-<label x="93.98" y="43.18" size="1.778" layer="95"/>
+<pinref part="U2" gate="U$1" pin="PD5(T1)"/>
+<wire x1="86.36" y1="45.72" x2="93.98" y2="45.72" width="0.1524" layer="91"/>
+<label x="93.98" y="45.72" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RX" class="0">
@@ -13861,9 +13919,9 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <label x="60.96" y="10.16" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U2" gate="U$1" pin="PD5(T1)"/>
-<wire x1="86.36" y1="45.72" x2="93.98" y2="45.72" width="0.1524" layer="91"/>
-<label x="93.98" y="45.72" size="1.778" layer="95"/>
+<pinref part="U2" gate="U$1" pin="PD6(AIN0)"/>
+<wire x1="86.36" y1="43.18" x2="93.98" y2="43.18" width="0.1524" layer="91"/>
+<label x="93.98" y="43.18" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VBATSIM" class="0">
