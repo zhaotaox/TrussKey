@@ -1,28 +1,74 @@
-#include "TrussKey.h"
 
+
+#include <SoftwareSerial.h>
+#include <avr/sleep.h>
+#include <avr/wdt.h>
+#include "SIM800.h"
+
+#define APN "connect"
+#define WARMUP 300
+
+
+int mq3_analogPin = A2; // connected to the output pin of MQ3 
+int solenoid_Pin = 10;
+
+int RedLED = 7;
+int GreenLED = 8;
+int BlueLED = 9;
+const int pwrPin = 6;  
+int detSW_Pin = 3;
+
+
+/*Variables used for MQ303 sensor*/
+int timer = 0;
+int base_val = 0;
+int max_val = 0;
+int diff = 0;
+int passed = 1;
+volatile int powerOn = 0;
+int readingCounter = 0;
+
+unsigned long powerTimer = 0;
+
+unsigned long longPressTime = 500;
+int longPressActive = 0;
+
+/*GPRS module variables*/
+
+char* smsMSG = "TrussKey is being tampered\032";
+char* smsNum = "+14125195973";
+CGPRS_SIM800 gprs;
+uint32_t count = 0;
+uint32_t errors = 0;
+int switchPin = A1;
+int smsSent;
+
+unsigned long time;
+
+volatile byte state = LOW;
 
 void setup(){
-  Serial.begin(9600); // open serial at 9600 bps
+  //con.begin(9600); // open serial at 9600 bps
   pinMode(mq3_analogPin,INPUT);
   pinMode(solenoid_Pin,OUTPUT);
-  pinMode(led1,OUTPUT);
-  pinMode(led2,OUTPUT);
-  pinMode(13,OUTPUT);
+  pinMode(BlueLED,OUTPUT);
+  pinMode(GreenLED,OUTPUT);
+  pinMode(RedLED,OUTPUT);
+
   pinMode(pwrPin,INPUT);
-  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,LOW);
+  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
+
+  //turnLEDOff();
+  //con.println("Start");
 }
 
 void loop()
 {
-  //digitalWrite(led1,HIGH);
-  // providing enough warmup time for readings to stabilize
-
-  //int reading = digitalRead(pwrPin);
-  digitalWrite(13,state);
+  turnLEDOff();
   if (digitalRead(pwrPin)){
     readingCounter++;
-    Serial.print("Reading counter");
-    Serial.println(readingCounter);
+    //con.print("Reading counter");
+    //con.println(readingCounter);
 
     /*powerOn determines whether power pin gets pressed
       Keep looping till the pin is set high
@@ -32,23 +78,23 @@ void loop()
       //powerOn = 1;
       if (readingCounter % 2 == 1){
         powerTimer = millis();
-        Serial.println(powerTimer);
-        Serial.println(longPressActive);
-        Serial.println(millis() - powerTimer);
-        digitalWrite(led1,HIGH);
+        //con.println(powerTimer);
+        //con.println(longPressActive);
+        //con.println(millis() - powerTimer);
+        turnBlueOn();
         powerOn = 1;
       }
       else{
         //readingCounter = 0;
-        digitalWrite(led1,LOW);
+        turnLEDOff();
         powerOn = 0;
       }
     }
     else{
       powerOn = 0;
       //readingCounter++;
-      Serial.println("Turn Off");
-      digitalWrite(led1,LOW);
+      //con.println("Turn Off");
+      turnLEDOff();
     }
     delay(500);
   }
@@ -56,9 +102,8 @@ void loop()
 
   /*After power is on*/
   if (powerOn){
-    digitalWrite(led1,HIGH);
+    turnBlueOn();
     digitalWrite(solenoid_Pin,LOW);
-    digitalWrite(led2,LOW);
     passed = 1;
     int values[15];
 
@@ -68,9 +113,9 @@ void loop()
     for (int i = 0; i < 15; i++){
       int mq3_value = 1023 - analogRead(mq3_analogPin);
       values[i] = mq3_value;
-      Serial.print(values[i]);
-      Serial.print("\tis\t");
-      Serial.println(i);
+      //con.print(values[i]);
+      //con.print("\tis\t");
+      //con.println(i);
       delay(100); //Just here to slow down the output.
       if ( i == 14){
         base_val = values[i];
@@ -80,12 +125,12 @@ void loop()
 
     /*After warm up, light up LED to cue user to breathe*/
     if (timer > WARMUP){
-      Serial.println("Start");
-      digitalWrite(led2,LOW);
+      //con.println("Start");
+      //digitalWrite(led2,LOW);
       for (int i = 0; i < 5;i++){
-        digitalWrite(led1,HIGH);
+        turnBlueOn();
         delay(500);
-        digitalWrite(led1,LOW);
+        turnLEDOff();
         delay(500);
       }
       max_val = 0;
@@ -98,30 +143,33 @@ void loop()
       for (int i = 0; i < 15; i++){
         int mq3_value = 1023 - analogRead(mq3_analogPin);
         values[i] = mq3_value;
-        Serial.print("Testing val is");
-        Serial.println(values[i]);
+        //con.print("Testing val is");
+        //con.println(values[i]);
         if (values[i] > max_val){
           max_val = values[i];
         }
         if (i > -1){
           diff = values[i] - base_val;
-          Serial.print("diff=");
-          Serial.println(diff);
+          //con.print("diff=");
+          //con.println(diff);
           if (diff > 160){
-            digitalWrite(led1, HIGH);
+            turnRedOn();
             digitalWrite(solenoid_Pin,LOW);
             delay(3000);
             passed = 0;
-            Serial.println("FAIL");
+            //con.println("FAIL");
             break;
           }
         }
         delay(500);
       }
       if ((passed == 1) && ((max_val - base_val) > 20)){ 
+        turnGreenOn();
         digitalWrite(solenoid_Pin,HIGH);
       }
-
+      //turnRedOn();
+      turnGreenOn();
+      delay(1000);
       /*Resets all values*/
       for (int i = 0; i < 15; i++){
         values[i] = 0;
@@ -129,12 +177,37 @@ void loop()
       max_val = 0;
       base_val = 0;
       timer = 0;
-      digitalWrite(led1,LOW);
-      digitalWrite(led2,LOW);
+      turnLEDOff();
       delay(3000);
     }
   }
 }
+
+void turnLEDOff()
+{
+  digitalWrite(BlueLED,HIGH);
+  digitalWrite(RedLED,HIGH);
+  digitalWrite(GreenLED,HIGH);
+}
+void turnBlueOn()
+{
+  digitalWrite(BlueLED,LOW);
+  digitalWrite(RedLED,HIGH);
+  digitalWrite(GreenLED,HIGH);
+}
+void turnRedOn()
+{
+  digitalWrite(BlueLED,HIGH);
+  digitalWrite(RedLED,LOW);
+  digitalWrite(GreenLED,HIGH);
+}
+void turnGreenOn()
+{
+  digitalWrite(BlueLED,HIGH);
+  digitalWrite(RedLED,HIGH);
+  digitalWrite(GreenLED,LOW);
+}
+
 
 void det_SW()
 {
@@ -157,8 +230,8 @@ void det_SW()
   }
 
   smsSent = gprs.sendSMS(smsNum,smsMSG);
-  
-  //state = !state;
-  //Serial.print("Det Tampered\n");
-}
 
+  noInterrupts();
+  //state = !state;
+  //con.print("Det Tampered\n");
+}
