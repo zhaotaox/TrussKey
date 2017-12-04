@@ -7,6 +7,7 @@
 
 #define APN "connect"
 #define WARMUP 300
+#define con Serial
 
 
 int mq3_analogPin = A2; // connected to the output pin of MQ3 
@@ -48,7 +49,7 @@ unsigned long time;
 volatile byte state = LOW;
 
 void setup(){
-  //con.begin(9600); // open serial at 9600 bps
+  con.begin(9600); // open serial at 9600 bps
   pinMode(mq3_analogPin,INPUT);
   pinMode(solenoid_Pin,OUTPUT);
   pinMode(BlueLED,OUTPUT);
@@ -59,7 +60,7 @@ void setup(){
   attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
 
   //turnLEDOff();
-  //con.println("Start");
+  con.println("Start");
 }
 
 void loop()
@@ -67,8 +68,8 @@ void loop()
   turnLEDOff();
   if (digitalRead(pwrPin)){
     readingCounter++;
-    //con.print("Reading counter");
-    //con.println(readingCounter);
+    con.print("Reading counter");
+    con.println(readingCounter);
 
     /*powerOn determines whether power pin gets pressed
       Keep looping till the pin is set high
@@ -88,17 +89,19 @@ void loop()
         //readingCounter = 0;
         turnLEDOff();
         powerOn = 0;
+        timer = 0;
       }
     }
     else{
       powerOn = 0;
       //readingCounter++;
-      //con.println("Turn Off");
+      con.println("Turn Off");
       turnLEDOff();
+      timer = 0;
     }
     delay(500);
   }
-  powerOn = 1;
+  //powerOn = 1;
 
   /*After power is on*/
   if (powerOn){
@@ -113,19 +116,20 @@ void loop()
     for (int i = 0; i < 15; i++){
       int mq3_value = 1023 - analogRead(mq3_analogPin);
       values[i] = mq3_value;
-      //con.print(values[i]);
-      //con.print("\tis\t");
-      //con.println(i);
+      con.print(values[i]);
+      con.print("\tis\t");
+      con.println(i);
       delay(100); //Just here to slow down the output.
       if ( i == 14){
         base_val = values[i];
       }
       timer = timer + 1;
+      con.println(timer);
     }
 
     /*After warm up, light up LED to cue user to breathe*/
     if (timer > WARMUP){
-      //con.println("Start");
+      con.println("Start");
       //digitalWrite(led2,LOW);
       for (int i = 0; i < 5;i++){
         turnBlueOn();
@@ -143,21 +147,21 @@ void loop()
       for (int i = 0; i < 15; i++){
         int mq3_value = 1023 - analogRead(mq3_analogPin);
         values[i] = mq3_value;
-        //con.print("Testing val is");
-        //con.println(values[i]);
+        con.print("Testing val is");
+        con.println(values[i]);
         if (values[i] > max_val){
           max_val = values[i];
         }
         if (i > -1){
           diff = values[i] - base_val;
-          //con.print("diff=");
-          //con.println(diff);
+          con.print("diff=");
+          con.println(diff);
           if (diff > 160){
             turnRedOn();
             digitalWrite(solenoid_Pin,LOW);
             delay(3000);
             passed = 0;
-            //con.println("FAIL");
+            con.println("FAIL");
             break;
           }
         }
