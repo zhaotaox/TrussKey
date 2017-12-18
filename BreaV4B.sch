@@ -13782,13 +13782,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <label x="91.44" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="PWRSW" class="0">
-<segment>
-<pinref part="U2" gate="U$1" pin="PD6(AIN0)"/>
-<wire x1="86.36" y1="43.18" x2="93.98" y2="43.18" width="0.1524" layer="91"/>
-<label x="93.98" y="43.18" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="RGB-BLUE" class="0">
 <segment>
 <wire x1="86.36" y1="35.56" x2="93.98" y2="35.56" width="0.1524" layer="91"/>
@@ -13808,6 +13801,13 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="U2" gate="U$1" pin="PB1(OC1A)"/>
 <wire x1="86.36" y1="33.02" x2="93.98" y2="33.02" width="0.1524" layer="91"/>
 <label x="93.98" y="33.02" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PWRSW" class="0">
+<segment>
+<pinref part="U2" gate="U$1" pin="PD2(INT0)"/>
+<wire x1="86.36" y1="53.34" x2="91.44" y2="53.34" width="0.1524" layer="91"/>
+<label x="91.44" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
