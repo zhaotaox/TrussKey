@@ -14006,20 +14006,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="J1" gate="-2" pin="MS"/>
 </segment>
 </net>
-<net name="RX" class="0">
-<segment>
-<pinref part="J1" gate="-3" pin="MS"/>
-<wire x1="160.02" y1="93.98" x2="147.32" y2="93.98" width="0.1524" layer="91"/>
-<label x="147.32" y="93.98" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="TX" class="0">
-<segment>
-<pinref part="J1" gate="-4" pin="MS"/>
-<wire x1="160.02" y1="91.44" x2="147.32" y2="91.44" width="0.1524" layer="91"/>
-<label x="144.78" y="91.44" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="VBATSIM" class="0">
 <segment>
 <pinref part="J1" gate="-1" pin="MSV"/>
@@ -14051,6 +14037,20 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="R6" gate="G$1" pin="1"/>
 <wire x1="116.84" y1="30.48" x2="109.22" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="SW1" gate="SW1" pin="1"/>
+</segment>
+</net>
+<net name="RX" class="0">
+<segment>
+<pinref part="J1" gate="-4" pin="MS"/>
+<wire x1="160.02" y1="91.44" x2="147.32" y2="91.44" width="0.1524" layer="91"/>
+<label x="147.32" y="91.44" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="TX" class="0">
+<segment>
+<pinref part="J1" gate="-3" pin="MS"/>
+<wire x1="160.02" y1="93.98" x2="147.32" y2="93.98" width="0.1524" layer="91"/>
+<label x="147.32" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
