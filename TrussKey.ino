@@ -10,7 +10,7 @@
 
 #define APN "connect"
 #define WARMUP 300
-#define con Serial
+
 
 int mq3_analogPin = A2; // connected to the output pin of MQ3 
 int solenoid_Pin = 10;
@@ -55,7 +55,7 @@ MAX17043 batteryMonitor;
 
 void setup(){
   Wire.begin();
-  con.begin(9600); // open serial at 9600 bps
+  //con.begin(9600); // open serial at 9600 bps
   pinMode(mq3_analogPin,INPUT);
   pinMode(solenoid_Pin,OUTPUT);
   pinMode(BlueLED,OUTPUT);
@@ -111,7 +111,7 @@ void loop()
     }
     delay(500);
   }
-  powerOn = 1;
+  //powerOn = 1;
 
   /*After power is on*/
   if (powerOn){
@@ -122,14 +122,6 @@ void loop()
     //con.println("V");
   
     float stateOfCharge = batteryMonitor.getSoC();
-    if (stateOfCharge < 80){
-      digitalWrite(4,HIGH);
-      con.println("Too low");
-    }
-    else{
-      digitalWrite(4,LOW);
-      con.println("High enough");
-    }
     //con.print("State of charge:\t");
     //con.print(stateOfCharge);
     //con.println("%");
@@ -144,15 +136,15 @@ void loop()
     for (int i = 0; i < 15; i++){
       int mq3_value = 1023 - analogRead(mq3_analogPin);
       values[i] = mq3_value;
-      con.print(values[i]);
-      con.print("\tis\t");
-      con.println(i);
+      //con.print(values[i]);
+      //con.print("\tis\t");
+      //con.println(i);
       delay(100); //Just here to slow down the output.
       if ( i == 14){
         base_val = values[i];
       }
       timer = timer + 1;
-      con.println(timer);
+      //con.println(timer);
     }
 
     /*After warm up, light up LED to cue user to breathe*/
