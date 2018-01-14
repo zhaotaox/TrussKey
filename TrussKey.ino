@@ -1,9 +1,7 @@
-
-
 #include <SoftwareSerial.h>
 #include <avr/sleep.h>
 #include <avr/wdt.h>
-//#include "SIM800.h"
+#include "SIM800.h"
 #include "MAX17043.h"
 #include "Wire.h"
 
@@ -38,9 +36,9 @@ int longPressActive = 0;
 
 /*GPRS module variables*/
 
-//char* smsMSG = "TrussKey is being tampered\032";
-//char* smsNum = "+14125195973";
-//CGPRS_SIM800 gprs;
+char* smsMSG = "TrussKey is being tampered\032";
+char* smsNum = "+14125195973";
+CGPRS_SIM800 gprs;
 uint32_t count = 0;
 uint32_t errors = 0;
 int switchPin = A1;
@@ -64,7 +62,7 @@ void setup(){
   pinMode(4,OUTPUT);
 
   pinMode(pwrPin,INPUT);
-//  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
+  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
   batteryMonitor.reset();
   batteryMonitor.quickStart();
   //turnLEDOff();
@@ -115,7 +113,7 @@ void loop()
 
   /*After power is on*/
   if (powerOn){
-    delay(1000);
+    //delay(1000);
     float cellVoltage = batteryMonitor.getVCell();
     //con.print("Voltage:\t\t");
     //con.print(cellVoltage, 4);
@@ -237,29 +235,29 @@ void turnGreenOn()
 }
 
 
-//void det_SW()
-//{
-//  /*Initiate GPRS*/
-//  interrupts();
-//  
-//  for (;;) {
-//    while (!gprs.init()) {
-//    }
-//    byte ret = gprs.setup(APN);
-//    if (ret == 0)
-//      break;
-//  }
-//
-//  for (;;) {
-//    if (gprs.httpInit()) break;
-//    //con.println(gprs.buffer);
-//    gprs.httpUninit();
-//    delay(1000);
-//  }
-//
-//  smsSent = gprs.sendSMS(smsNum,smsMSG);
-//
-//  noInterrupts();
-//  //state = !state;
-//  //con.print("Det Tampered\n");
-//}
+void det_SW()
+{
+  /*Initiate GPRS*/
+  interrupts();
+  
+  for (;;) {
+    while (!gprs.init()) {
+    }
+    byte ret = gprs.setup(APN);
+    if (ret == 0)
+      break;
+  }
+
+  for (;;) {
+    if (gprs.httpInit()) break;
+    //con.println(gprs.buffer);
+    gprs.httpUninit();
+    delay(1000);
+  }
+
+  smsSent = gprs.sendSMS(smsNum,smsMSG);
+
+  noInterrupts();
+  //state = !state;
+  //con.print("Det Tampered\n");
+}
