@@ -1,15 +1,16 @@
+
+
 #include <SoftwareSerial.h>
 #include <avr/sleep.h>
 #include <avr/wdt.h>
-#include "SIM800.h"
+//#include "SIM800.h"
 #include "MAX17043.h"
 #include "Wire.h"
 
 
 #define APN "connect"
 #define WARMUP 300
-
-
+#define con Serial
 
 int mq3_analogPin = A2; // connected to the output pin of MQ3 
 int solenoid_Pin = 10;
@@ -17,19 +18,17 @@ int solenoid_Pin = 10;
 int RedLED = 7;
 int GreenLED = 8;
 int BlueLED = 9;
-
-/*Interrupt pins*/
 const int pwrPin = 2;  
 int detSW_Pin = 3;
 
 
 /*Variables used for MQ303 sensor*/
-volatile int timer = 0;  // Gets cleared everytime power pin gets pressed
+volatile int timer = 0;
 int base_val = 0;
 int max_val = 0;
 int diff = 0;
 int passed = 1;
-volatile int powerOn = 0;
+volatile byte powerOn = LOW;
 int readingCounter = 0;
 
 unsigned long powerTimer = 0;
@@ -39,9 +38,9 @@ int longPressActive = 0;
 
 /*GPRS module variables*/
 
-char* smsMSG = "TrussKey is being tampered\032";
-char* smsNum = "+14125195973";
-CGPRS_SIM800 gprs;
+//char* smsMSG = "TrussKey is being tampered\032";
+//char* smsNum = "+14125195973";
+//CGPRS_SIM800 gprs;
 uint32_t count = 0;
 uint32_t errors = 0;
 int switchPin = A1;
@@ -49,14 +48,14 @@ int smsSent;
 
 unsigned long time;
 
-//volatile byte powerOn = LOW;
+volatile byte state = LOW;
 
 MAX17043 batteryMonitor;
 
 
 void setup(){
   Wire.begin();
-  //con.begin(9600); // open serial at 9600 bps
+  con.begin(9600); // open serial at 9600 bps
   pinMode(mq3_analogPin,INPUT);
   pinMode(solenoid_Pin,OUTPUT);
   pinMode(BlueLED,OUTPUT);
@@ -65,22 +64,21 @@ void setup(){
   pinMode(4,OUTPUT);
 
   pinMode(pwrPin,INPUT);
-  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,RISING);
   attachInterrupt(digitalPinToInterrupt(pwrPin),pwr_SW,RISING);
-  //batteryMonitor.reset();
-  //batteryMonitor.quickStart();
+//  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
+  batteryMonitor.reset();
+  batteryMonitor.quickStart();
   //turnLEDOff();
-  //con.println("Start");
+  con.println("Start");
 }
 
 void loop()
 {
   turnLEDOff();
-  
 //  if (digitalRead(pwrPin)){
 //    readingCounter++;
-//    //con.print("Reading counter");
-//    //con.println(readingCounter);
+//    con.print("Reading counter");
+//    con.println(readingCounter);
 //
 //    /*powerOn determines whether power pin gets pressed
 //      Keep looping till the pin is set high
@@ -89,7 +87,7 @@ void loop()
 //    if (powerOn == 0){
 //      //powerOn = 1;
 //      if (readingCounter % 2 == 1){
-//        powerTimer = millis();
+//        //powerTimer = millis();
 //        //con.println(powerTimer);
 //        //con.println(longPressActive);
 //        //con.println(millis() - powerTimer);
@@ -114,21 +112,25 @@ void loop()
 //    }
 //    delay(500);
 //  }
-//  powerOn = 1;
-
+  //powerOn = 1;
+  con.println(powerOn);
+//  if (digitalRead(pwrPin)){
+//    con.println("Power Pin Pressed");
+//  }
   /*After power is on*/
   if (powerOn){
-    turnBlueOn();
     //delay(1000);
+    turnBlueOn();
+    //con.println(powerOn);
     float cellVoltage = batteryMonitor.getVCell();
-    //con.print("Voltage:\t\t");
-    //con.print(cellVoltage, 4);
-    //con.println("V");
+    con.print("Voltage:\t\t");
+    con.print(cellVoltage, 4);
+    con.println("V");
   
     float stateOfCharge = batteryMonitor.getSoC();
-    //con.print("State of charge:\t");
-    //con.print(stateOfCharge);
-    //con.println("%");
+    con.print("State of charge:\t");
+    con.print(stateOfCharge);
+    con.println("%");
     turnBlueOn();
     digitalWrite(solenoid_Pin,LOW);
     passed = 1;
@@ -140,15 +142,15 @@ void loop()
     for (int i = 0; i < 15; i++){
       int mq3_value = 1023 - analogRead(mq3_analogPin);
       values[i] = mq3_value;
-      //con.print(values[i]);
-      //con.print("\tis\t");
-      //con.println(i);
+      con.print(values[i]);
+      con.print("\tis\t");
+      con.println(i);
       delay(100); //Just here to slow down the output.
       if ( i == 14){
         base_val = values[i];
       }
       timer = timer + 1;
-      //con.println(timer);
+      con.println(timer);
     }
 
     /*After warm up, light up LED to cue user to breathe*/
@@ -171,21 +173,21 @@ void loop()
       for (int i = 0; i < 15; i++){
         int mq3_value = 1023 - analogRead(mq3_analogPin);
         values[i] = mq3_value;
-        //con.print("Testing val is");
-        //con.println(values[i]);
+        con.print("Testing val is");
+        con.println(values[i]);
         if (values[i] > max_val){
           max_val = values[i];
         }
         if (i > -1){
           diff = values[i] - base_val;
-          //con.print("diff=");
-          //con.println(diff);
+          con.print("diff=");
+          con.println(diff);
           if (diff > 160){
             turnRedOn();
             digitalWrite(solenoid_Pin,LOW);
             delay(3000);
             passed = 0;
-            //con.println("FAIL");
+            con.println("FAIL");
             break;
           }
         }
@@ -195,11 +197,13 @@ void loop()
         turnGreenOn();
         delay(500);
         digitalWrite(solenoid_Pin,HIGH);
-        passed = 2;
+        passed = 2; 
+        Serial.println("PASS");
       }
       if (passed != 2){
         turnRedOn();
         delay(500);
+        con.println("FAIL");
       }
       delay(1000);
       /*Resets all values*/
@@ -241,35 +245,32 @@ void turnGreenOn()
 }
 
 
-/*Detector switch interrupt routine
-  Once pressed, sends out tampering warning message*/
-void det_SW()
-{
-  /*Initiate GPRS*/
-  interrupts();
-  
-  for (;;) {
-    while (!gprs.init()) {
-    }
-    byte ret = gprs.setup(APN);
-    if (ret == 0)
-      break;
-  }
-
-  for (;;) {
-    if (gprs.httpInit()) break;
-    //con.println(gprs.buffer);
-    gprs.httpUninit();
-    delay(1000);
-  }
-
-  smsSent = gprs.sendSMS(smsNum,smsMSG);
-
-  noInterrupts();
-  //state = !state;
-  //con.print("Det Tampered\n");
-}
-
+//void det_SW()
+//{
+//  /*Initiate GPRS*/
+//  interrupts();
+//  
+//  for (;;) {
+//    while (!gprs.init()) {
+//    }
+//    byte ret = gprs.setup(APN);
+//    if (ret == 0)
+//      break;
+//  }
+//
+//  for (;;) {
+//    if (gprs.httpInit()) break;
+//    //con.println(gprs.buffer);
+//    gprs.httpUninit();
+//    delay(1000);
+//  }
+//
+//  smsSent = gprs.sendSMS(smsNum,smsMSG);
+//
+//  noInterrupts();
+//  //state = !state;
+//  //con.print("Det Tampered\n");
+//}
 
 /*Interrupt routine for power switch*/
 void pwr_SW()
@@ -277,6 +278,6 @@ void pwr_SW()
   interrupts();
   powerOn = !powerOn;
   timer = 0;
+  con.print("Interrupt initiated");
   noInterrupts();
 }
-
