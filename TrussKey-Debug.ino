@@ -2,8 +2,9 @@
 
 #include <SoftwareSerial.h>
 #include <avr/sleep.h>
+#include <avr/power.h>
 #include <avr/wdt.h>
-//#include "SIM800.h"
+#include "SIM800.h"
 #include "MAX17043.h"
 #include "Wire.h"
 
@@ -20,6 +21,7 @@ int GreenLED = 8;
 int BlueLED = 9;
 const int pwrPin = 2;  
 int detSW_Pin = 3;
+int shutdown_Pin = 4;
 
 
 /*Variables used for MQ303 sensor*/
@@ -38,13 +40,14 @@ int longPressActive = 0;
 
 /*GPRS module variables*/
 
-//char* smsMSG = "TrussKey is being tampered\032";
-//char* smsNum = "+14125195973";
-//CGPRS_SIM800 gprs;
+char* smsMSG = "TrussKey is being tampered\032";
+char* smsNum = "+14125195973";
+CGPRS_SIM800 gprs;
 uint32_t count = 0;
 uint32_t errors = 0;
 int switchPin = A1;
 int smsSent;
+int sleep_gprs;
 
 unsigned long time;
 
@@ -61,11 +64,11 @@ void setup(){
   pinMode(BlueLED,OUTPUT);
   pinMode(GreenLED,OUTPUT);
   pinMode(RedLED,OUTPUT);
-  pinMode(4,OUTPUT);
+  pinMode(shutdown_Pin,OUTPUT);
 
   pinMode(pwrPin,INPUT);
   attachInterrupt(digitalPinToInterrupt(pwrPin),pwr_SW,RISING);
-//  attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,HIGH);
+  //attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,FALLING);
   batteryMonitor.reset();
   batteryMonitor.quickStart();
   //turnLEDOff();
@@ -75,6 +78,7 @@ void setup(){
 void loop()
 {
   turnLEDOff();
+  digitalWrite(shutdown_Pin,LOW);
 //  if (digitalRead(pwrPin)){
 //    readingCounter++;
 //    con.print("Reading counter");
@@ -118,8 +122,15 @@ void loop()
 //    con.println("Power Pin Pressed");
 //  }
   /*After power is on*/
+  //powerOn = 1;
+  if (!powerOn){
+    //sleepGPRS();
+    //sleepNow();
+  }
   if (powerOn){
     //delay(1000);
+    Serial.println("Pressed");
+    digitalWrite(shutdown_Pin,HIGH);
     turnBlueOn();
     //con.println(powerOn);
     float cellVoltage = batteryMonitor.getVCell();
@@ -214,6 +225,8 @@ void loop()
       base_val = 0;
       timer = 0;
       turnLEDOff();
+      digitalWrite(shutdown_Pin,LOW);
+      powerOn = 0;
       delay(2000);
     }
   }
@@ -243,41 +256,66 @@ void turnGreenOn()
   digitalWrite(RedLED,HIGH);
   digitalWrite(GreenLED,LOW);
 }
+// watchdog interrupt
+ISR(WDT_vect) 
+{
+  wdt_disable();  // disable watchdog
+}
+void sleepNow()
+{
+  power_adc_disable(); // Disable ADC before going to sleep
+  set_sleep_mode (SLEEP_MODE_PWR_DOWN);  // Power down sleep mode
+  sleep_enable(); //Enables sleep bit in the MCUCR register
+  attachInterrupt(digitalPinToInterrupt(pwrPin),pwr_SW,RISING);
+  
+  sleep_mode();            // now goes to Sleep and waits for the interrupt
 
 
-//void det_SW()
-//{
-//  /*Initiate GPRS*/
-//  interrupts();
-//  
-//  for (;;) {
-//    while (!gprs.init()) {
-//    }
-//    byte ret = gprs.setup(APN);
-//    if (ret == 0)
-//      break;
-//  }
-//
-//  for (;;) {
-//    if (gprs.httpInit()) break;
-//    //con.println(gprs.buffer);
-//    gprs.httpUninit();
-//    delay(1000);
-//  }
-//
-//  smsSent = gprs.sendSMS(smsNum,smsMSG);
-//
-//  noInterrupts();
-//  //state = !state;
-//  //con.print("Det Tampered\n");
-//}
+  sleep_disable();  //  First thing after waking up  (Comes back to ISR)
+  //detachInterrupt(0);
+}
+//Put gprs to sleep
+void sleepGPRS()
+{
+  sleep_gprs = gprs.sleep(1);
+}
+// Detector switch de-pressed interrupt routine
+void det_SW()
+{
+  /*Initiate GPRS*/
+  interrupts();
+  con.print("Det Tampered\n");
+  gprs.sleep(0);
+  delay(500);
+  for (;;) {
+    while (!gprs.init()) {
+    }
+    byte ret = gprs.setup(APN);
+    if (ret == 0)
+      break;
+  }
+
+  for (;;) {
+    if (gprs.httpInit()) break;
+    //con.println(gprs.buffer);
+    gprs.httpUninit();
+    delay(1000);
+  }
+
+  smsSent = gprs.sendSMS(smsNum,smsMSG);
+
+  noInterrupts();
+  //state = !state;
+}
 
 /*Interrupt routine for power switch*/
 void pwr_SW()
 {
-  interrupts();
+  //interrupts();
   powerOn = !powerOn;
   timer = 0;
-  con.print("Interrupt initiated");
-  noInterrupts();
+  con.print("Power On:");
+  con.println(powerOn);
+  con.println("Interrupt initiated");
+  //noInterrupts();
 }

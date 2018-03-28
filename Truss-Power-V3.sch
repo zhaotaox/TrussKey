@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.2">
+<eagle version="8.4.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -13511,64 +13511,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="con-molex" urn="urn:adsk.eagle:library:165">
-<description>&lt;b&gt;Molex Connectors&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="22-23-2021" library_version="1">
-<description>.100" (2.54mm) Center Headers - 2 Pin</description>
-<wire x1="-2.54" y1="3.175" x2="2.54" y2="3.175" width="0.254" layer="21"/>
-<wire x1="2.54" y1="3.175" x2="2.54" y2="1.27" width="0.254" layer="21"/>
-<wire x1="2.54" y1="1.27" x2="2.54" y2="-3.175" width="0.254" layer="21"/>
-<wire x1="2.54" y1="-3.175" x2="-2.54" y2="-3.175" width="0.254" layer="21"/>
-<wire x1="-2.54" y1="-3.175" x2="-2.54" y2="1.27" width="0.254" layer="21"/>
-<wire x1="-2.54" y1="1.27" x2="-2.54" y2="3.175" width="0.254" layer="21"/>
-<wire x1="-2.54" y1="1.27" x2="2.54" y2="1.27" width="0.254" layer="21"/>
-<pad name="1" x="-1.27" y="0" drill="1" shape="long" rot="R90"/>
-<pad name="2" x="1.27" y="0" drill="1" shape="long" rot="R90"/>
-<text x="-2.54" y="3.81" size="1.016" layer="25" ratio="10">&gt;NAME</text>
-<text x="-2.54" y="-5.08" size="1.016" layer="27" ratio="10">&gt;VALUE</text>
-</package>
-</packages>
-<symbols>
-<symbol name="MV" library_version="1">
-<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
-<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
-<text x="-0.762" y="1.397" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-</symbol>
-<symbol name="M" library_version="1">
-<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
-<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
-<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="22-23-2021" prefix="X" library_version="1">
-<description>.100" (2.54mm) Center Header - 2 Pin</description>
-<gates>
-<gate name="-1" symbol="MV" x="0" y="0" addlevel="always" swaplevel="1"/>
-<gate name="-2" symbol="M" x="0" y="-2.54" addlevel="always" swaplevel="1"/>
-</gates>
-<devices>
-<device name="" package="22-23-2021">
-<connects>
-<connect gate="-1" pin="S" pad="1"/>
-<connect gate="-2" pin="S" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="MF" value="MOLEX" constant="no"/>
-<attribute name="MPN" value="22-23-2021" constant="no"/>
-<attribute name="OC_FARNELL" value="1462926" constant="no"/>
-<attribute name="OC_NEWARK" value="25C3832" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="led" urn="urn:adsk.eagle:library:259">
 <description>&lt;b&gt;LEDs&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;&lt;br&gt;
@@ -15417,9 +15359,6 @@ Source: www.kingbright.com</description>
 <part name="C4" library="NewPart" deviceset="TANT-CAP" device="" value="100uF"/>
 <part name="C3" library="microbuilder" deviceset="CAP_CERAMIC" device="0805-NOOUTLINE" value="10µF"/>
 <part name="U$15" library="microbuilder" deviceset="GND" device=""/>
-<part name="X1" library="con-molex" library_urn="urn:adsk.eagle:library:165" deviceset="22-23-2021" device=""/>
-<part name="U$16" library="microbuilder" deviceset="VBAT" device=""/>
-<part name="U$17" library="microbuilder" deviceset="GND" device=""/>
 <part name="U3" library="NewPart" deviceset="MAX17044" device=""/>
 <part name="R6" library="resistor" deviceset="R-US_" device="R0402" value="1K"/>
 <part name="R11" library="resistor" deviceset="R-US_" device="R0402" value="180"/>
@@ -15436,6 +15375,7 @@ Source: www.kingbright.com</description>
 <part name="U$22" library="microbuilder" deviceset="GND" device=""/>
 <part name="R7" library="resistor" deviceset="R-US_" device="R0402" value="470"/>
 <part name="X4" library="NewPart" deviceset="CON-1PIN" device=""/>
+<part name="X5" library="NewPart" deviceset="CON-1PIN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15488,10 +15428,6 @@ Source: www.kingbright.com</description>
 <instance part="C4" gate="C1" x="162.56" y="33.02"/>
 <instance part="C3" gate="G$1" x="119.38" y="76.2"/>
 <instance part="U$15" gate="G$1" x="119.38" y="68.58"/>
-<instance part="X1" gate="-1" x="99.06" y="15.24"/>
-<instance part="X1" gate="-2" x="99.06" y="12.7"/>
-<instance part="U$16" gate="G$1" x="81.28" y="20.32"/>
-<instance part="U$17" gate="G$1" x="81.28" y="7.62"/>
 <instance part="U3" gate="G$1" x="175.26" y="63.5"/>
 <instance part="R6" gate="G$1" x="142.24" y="68.58"/>
 <instance part="R11" gate="G$1" x="142.24" y="55.88"/>
@@ -15508,6 +15444,7 @@ Source: www.kingbright.com</description>
 <instance part="U$22" gate="G$1" x="55.88" y="38.1"/>
 <instance part="R7" gate="G$1" x="60.96" y="76.2" rot="R180"/>
 <instance part="X4" gate="G$1" x="121.92" y="2.54"/>
+<instance part="X5" gate="G$1" x="121.92" y="-2.54"/>
 </instances>
 <busses>
 </busses>
@@ -15598,12 +15535,6 @@ Source: www.kingbright.com</description>
 <wire x1="119.38" y1="73.66" x2="119.38" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-2" pin="S"/>
-<pinref part="U$17" gate="G$1" pin="GND"/>
-<wire x1="96.52" y1="12.7" x2="81.28" y2="12.7" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="12.7" x2="81.28" y2="10.16" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="157.48" y1="53.34" x2="157.48" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="U3" gate="G$1" pin="GND"/>
 <pinref part="U$5" gate="G$1" pin="GND"/>
@@ -15633,6 +15564,11 @@ Source: www.kingbright.com</description>
 <pinref part="U$22" gate="G$1" pin="GND"/>
 <wire x1="48.26" y1="43.18" x2="55.88" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="43.18" x2="55.88" y2="40.64" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="X5" gate="G$1" pin="P$1"/>
+<wire x1="116.84" y1="-2.54" x2="111.76" y2="-2.54" width="0.1524" layer="91"/>
+<label x="111.76" y="-2.54" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -15687,12 +15623,6 @@ Source: www.kingbright.com</description>
 <label x="160.02" y="10.16" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$16" gate="G$1" pin="VBAT"/>
-<pinref part="X1" gate="-1" pin="S"/>
-<wire x1="81.28" y1="17.78" x2="81.28" y2="15.24" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="15.24" x2="96.52" y2="15.24" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="U$8" gate="G$1" pin="VBAT"/>
 <pinref part="R11" gate="G$1" pin="1"/>
 <wire x1="129.54" y1="55.88" x2="137.16" y2="55.88" width="0.1524" layer="91"/>
@@ -15706,6 +15636,11 @@ Source: www.kingbright.com</description>
 <pinref part="J1" gate="-2" pin="MS"/>
 <wire x1="60.96" y1="20.32" x2="55.88" y2="20.32" width="0.1524" layer="91"/>
 <label x="50.8" y="20.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="X4" gate="G$1" pin="P$1"/>
+<wire x1="116.84" y1="2.54" x2="111.76" y2="2.54" width="0.1524" layer="91"/>
+<label x="111.76" y="2.54" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="VBUS" class="0">
