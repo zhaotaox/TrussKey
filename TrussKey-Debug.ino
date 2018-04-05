@@ -19,8 +19,8 @@ int solenoid_Pin = 10;
 int RedLED = 7;
 int GreenLED = 8;
 int BlueLED = 9;
-const int pwrPin = 2;  
-int detSW_Pin = 3;
+const int pwrPin = 3;  
+int detSW_Pin = 2;
 int shutdown_Pin = 4;
 
 
