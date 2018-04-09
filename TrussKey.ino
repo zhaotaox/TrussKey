@@ -19,8 +19,8 @@ int GreenLED = 8;
 int BlueLED = 9;
 
 /*Interrupt pins*/
-const int pwrPin = 2;  
-int detSW_Pin = 3;
+const int pwrPin = 3;  
+int detSW_Pin = 2;
 
 
 /*Variables used for MQ303 sensor*/
