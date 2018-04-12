@@ -13163,6 +13163,18 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <pin name="VBAT" x="-11.684" y="7.62" length="middle" rot="R270"/>
 <pin name="GND" x="-11.684" y="-9.398" length="middle" rot="R90"/>
 </symbol>
+<symbol name="SN74LVC1G86DC1LR">
+<wire x1="-7.62" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-2.54" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="5.08" x2="0" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="0" y1="5.08" x2="0" y2="-5.08" width="0.254" layer="94" curve="-126.869898"/>
+<wire x1="3.302" y1="0" x2="9.906" y2="0" width="0.254" layer="94"/>
+<pin name="P$1" x="-12.446" y="2.54" length="middle"/>
+<pin name="P$2" x="-12.7" y="-2.54" length="middle"/>
+<pin name="P$3" x="14.986" y="0" length="middle" rot="R180"/>
+<pin name="P$4" x="5.08" y="8.382" length="middle" rot="R270"/>
+<pin name="P$5" x="7.62" y="8.382" length="middle" rot="R270"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="TPS61090" prefix="U">
@@ -13280,6 +13292,25 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <connect gate="G$1" pin="P$1" pad="2"/>
 <connect gate="G$1" pin="P$2" pad="4"/>
 <connect gate="G$1" pin="VBAT" pad="5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SN74LVC1G86DC1LR" prefix="U">
+<gates>
+<gate name="G$1" symbol="SN74LVC1G86DC1LR" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOC70-5">
+<connects>
+<connect gate="G$1" pin="P$1" pad="1"/>
+<connect gate="G$1" pin="P$2" pad="2"/>
+<connect gate="G$1" pin="P$3" pad="4"/>
+<connect gate="G$1" pin="P$4" pad="5"/>
+<connect gate="G$1" pin="P$5" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -18242,6 +18273,7 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <part name="D1" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="SOD523" package3d_urn="urn:adsk.eagle:package:43410/1"/>
 <part name="U$16" library="NewPart" deviceset="INVERTER-GATE" device=""/>
 <part name="D2" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="SOD523" package3d_urn="urn:adsk.eagle:package:43410/1"/>
+<part name="U4" library="NewPart" deviceset="SN74LVC1G86DC1LR" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18653,6 +18685,11 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <wire x1="200.66" y1="25.4" x2="200.66" y2="76.2" width="0.1524" layer="95" style="longdash"/>
 <wire x1="200.66" y1="76.2" x2="106.68" y2="76.2" width="0.1524" layer="95" style="longdash"/>
 <text x="114.3" y="68.58" size="3.81" layer="95">CONNECTOR</text>
+<wire x1="-21.336" y1="91.186" x2="102.87" y2="91.186" width="0.1524" layer="95" style="longdash"/>
+<wire x1="102.87" y1="91.186" x2="102.87" y2="24.13" width="0.1524" layer="95" style="longdash"/>
+<wire x1="102.87" y1="24.13" x2="-21.336" y2="24.13" width="0.1524" layer="95" style="longdash"/>
+<wire x1="-21.336" y1="24.13" x2="-21.336" y2="91.186" width="0.1524" layer="95" style="longdash"/>
+<text x="-17.526" y="83.566" size="3.81" layer="95">BOOST EN XOR</text>
 </plain>
 <instances>
 <instance part="X3" gate="-1" x="162.56" y="63.5"/>
@@ -18671,6 +18708,7 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <instance part="D1" gate="G$1" x="15.24" y="33.02"/>
 <instance part="U$16" gate="G$1" x="20.32" y="53.34"/>
 <instance part="D2" gate="G$1" x="38.354" y="53.34"/>
+<instance part="U4" gate="G$1" x="71.12" y="42.418"/>
 </instances>
 <busses>
 </busses>
@@ -18697,6 +18735,11 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <wire x1="8.636" y1="43.942" x2="8.636" y2="41.656" width="0.1524" layer="91"/>
 <label x="8.636" y="41.402" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<wire x1="78.74" y1="55.88" x2="78.74" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="U4" gate="G$1" pin="P$5"/>
+<label x="78.74" y="55.88" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="VBAT" class="0">
 <segment>
@@ -18713,6 +18756,11 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <pinref part="U$16" gate="G$1" pin="VBAT"/>
 <wire x1="8.636" y1="60.96" x2="8.636" y2="64.77" width="0.1524" layer="91"/>
 <label x="8.89" y="65.024" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U4" gate="G$1" pin="P$4"/>
+<wire x1="76.2" y1="50.8" x2="76.2" y2="55.88" width="0.1524" layer="91" style="longdash"/>
+<label x="76.2" y="57.658" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -18786,14 +18834,27 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <wire x1="31.496" y1="53.34" x2="35.814" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="EN_SIG" class="0">
+<net name="DETSW_D" class="0">
+<segment>
+<pinref part="D2" gate="G$1" pin="C"/>
+<wire x1="40.894" y1="53.34" x2="58.674" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="U4" gate="G$1" pin="P$1"/>
+<wire x1="58.674" y1="44.958" x2="58.674" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="PWRSW_D" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="C"/>
-<wire x1="17.78" y1="33.02" x2="53.848" y2="33.02" width="0.1524" layer="91"/>
-<pinref part="D2" gate="G$1" pin="C"/>
-<wire x1="40.894" y1="53.34" x2="53.848" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="53.848" y1="53.34" x2="53.848" y2="33.02" width="0.1524" layer="91"/>
-<label x="53.848" y="43.688" size="1.778" layer="95" xref="yes"/>
+<wire x1="17.78" y1="33.02" x2="58.42" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="U4" gate="G$1" pin="P$2"/>
+<wire x1="58.42" y1="39.878" x2="58.42" y2="33.02" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="EN_SIG" class="0">
+<segment>
+<pinref part="U4" gate="G$1" pin="P$3"/>
+<wire x1="86.106" y1="42.418" x2="92.964" y2="42.418" width="0.1524" layer="91"/>
+<label x="92.964" y="42.164" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
