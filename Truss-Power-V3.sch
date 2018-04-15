@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -13152,6 +13152,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </symbol>
 <symbol name="CON-1PIN">
 <pin name="P$1" x="-5.08" y="0" length="middle"/>
+<text x="-2.54" y="2.54" size="1.778" layer="95">&gt;NAME</text>
 </symbol>
 <symbol name="INVERTER">
 <wire x1="-2.54" y1="2.54" x2="-2.54" y2="-2.54" width="0.254" layer="94"/>
@@ -13267,6 +13268,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </devices>
 </deviceset>
 <deviceset name="CON-1PIN" prefix="X">
+<description>THROUGH HOLE FOR 1-PIN CONNECTOR</description>
 <gates>
 <gate name="G$1" symbol="CON-1PIN" x="2.54" y="0"/>
 </gates>
@@ -13314,64 +13316,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </connects>
 <technologies>
 <technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
-<library name="con-molex">
-<description>&lt;b&gt;Molex Connectors&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="22-23-2021">
-<description>.100" (2.54mm) Center Headers - 2 Pin</description>
-<wire x1="-2.54" y1="3.175" x2="2.54" y2="3.175" width="0.254" layer="21"/>
-<wire x1="2.54" y1="3.175" x2="2.54" y2="1.27" width="0.254" layer="21"/>
-<wire x1="2.54" y1="1.27" x2="2.54" y2="-3.175" width="0.254" layer="21"/>
-<wire x1="2.54" y1="-3.175" x2="-2.54" y2="-3.175" width="0.254" layer="21"/>
-<wire x1="-2.54" y1="-3.175" x2="-2.54" y2="1.27" width="0.254" layer="21"/>
-<wire x1="-2.54" y1="1.27" x2="-2.54" y2="3.175" width="0.254" layer="21"/>
-<wire x1="-2.54" y1="1.27" x2="2.54" y2="1.27" width="0.254" layer="21"/>
-<pad name="1" x="-1.27" y="0" drill="1" shape="long" rot="R90"/>
-<pad name="2" x="1.27" y="0" drill="1" shape="long" rot="R90"/>
-<text x="-2.54" y="3.81" size="1.016" layer="25" ratio="10">&gt;NAME</text>
-<text x="-2.54" y="-5.08" size="1.016" layer="27" ratio="10">&gt;VALUE</text>
-</package>
-</packages>
-<symbols>
-<symbol name="MV">
-<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
-<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
-<text x="-0.762" y="1.397" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-</symbol>
-<symbol name="M">
-<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
-<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
-<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="22-23-2021" prefix="X">
-<description>.100" (2.54mm) Center Header - 2 Pin</description>
-<gates>
-<gate name="-1" symbol="MV" x="0" y="0" addlevel="always" swaplevel="1"/>
-<gate name="-2" symbol="M" x="0" y="-2.54" addlevel="always" swaplevel="1"/>
-</gates>
-<devices>
-<device name="" package="22-23-2021">
-<connects>
-<connect gate="-1" pin="S" pad="1"/>
-<connect gate="-2" pin="S" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="MF" value="MOLEX" constant="no"/>
-<attribute name="MPN" value="22-23-2021" constant="no"/>
-<attribute name="OC_FARNELL" value="1462926" constant="no"/>
-<attribute name="OC_NEWARK" value="25C3832" constant="no"/>
-</technology>
 </technologies>
 </device>
 </devices>
@@ -18234,7 +18178,6 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <part name="U$7" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$8" library="microbuilder" deviceset="VBAT" device=""/>
 <part name="U1" library="NewPart" deviceset="TPS61090" device=""/>
-<part name="X3" library="con-molex" deviceset="22-23-2021" device=""/>
 <part name="R1" library="adafruit" deviceset="R-US_" device="R0603" value="2.4M"/>
 <part name="R2" library="adafruit" deviceset="R-US_" device="R0603" value="390K"/>
 <part name="U$9" library="microbuilder" deviceset="GND" device=""/>
@@ -18274,6 +18217,8 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <part name="U$16" library="NewPart" deviceset="INVERTER-GATE" device=""/>
 <part name="D2" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="SOD523" package3d_urn="urn:adsk.eagle:package:43410/1"/>
 <part name="U4" library="NewPart" deviceset="SN74LVC1G86DC1LR" device=""/>
+<part name="X1" library="NewPart" deviceset="CON-1PIN" device=""/>
+<part name="X6" library="NewPart" deviceset="CON-1PIN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18692,8 +18637,6 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <text x="-17.526" y="83.566" size="3.81" layer="95">BOOST EN XOR</text>
 </plain>
 <instances>
-<instance part="X3" gate="-1" x="162.56" y="63.5"/>
-<instance part="X3" gate="-2" x="162.56" y="60.96"/>
 <instance part="LED1" gate="G$1" x="38.1" y="76.2" rot="R90"/>
 <instance part="R13" gate="G$1" x="53.34" y="76.2" rot="R180"/>
 <instance part="U$22" gate="G$1" x="66.04" y="71.12"/>
@@ -18709,16 +18652,13 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <instance part="U$16" gate="G$1" x="20.32" y="53.34"/>
 <instance part="D2" gate="G$1" x="38.354" y="53.34"/>
 <instance part="U4" gate="G$1" x="71.12" y="42.418"/>
+<instance part="X1" gate="G$1" x="185.42" y="55.88"/>
+<instance part="X6" gate="G$1" x="185.42" y="53.34"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GND" class="0">
-<segment>
-<wire x1="160.02" y1="63.5" x2="154.94" y2="63.5" width="0.1524" layer="91"/>
-<label x="154.94" y="63.5" size="1.778" layer="95" rot="R180"/>
-<pinref part="X3" gate="-1" pin="S"/>
-</segment>
 <segment>
 <pinref part="R13" gate="G$1" pin="1"/>
 <pinref part="U$22" gate="G$1" pin="GND"/>
@@ -18739,6 +18679,11 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <wire x1="78.74" y1="55.88" x2="78.74" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="U4" gate="G$1" pin="P$5"/>
 <label x="78.74" y="55.88" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="P$1"/>
+<wire x1="180.34" y1="55.88" x2="175.26" y2="55.88" width="0.1524" layer="91"/>
+<label x="175.26" y="55.88" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="VBAT" class="0">
@@ -18765,9 +18710,9 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 </net>
 <net name="VCC" class="0">
 <segment>
-<wire x1="160.02" y1="60.96" x2="154.94" y2="60.96" width="0.1524" layer="91"/>
-<label x="154.94" y="60.96" size="1.778" layer="95" rot="R180"/>
-<pinref part="X3" gate="-2" pin="S"/>
+<pinref part="X6" gate="G$1" pin="P$1"/>
+<wire x1="180.34" y1="53.34" x2="175.26" y2="53.34" width="0.1524" layer="91"/>
+<label x="175.26" y="53.34" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="SCL" class="0">
