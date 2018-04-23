@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
@@ -324,6 +324,7 @@
 <pad name="P$1" x="-2.5" y="0" drill="1"/>
 <pad name="P$2" x="2.5" y="0" drill="1"/>
 <text x="-2.54" y="1.27" size="1.27" layer="25">&gt;NAME</text>
+<pad name="P$3" x="-2.5" y="0" drill="1"/>
 </package>
 <package name="TDFN">
 <smd name="9" x="0" y="0" dx="1.75" dy="1.63" layer="1" rot="R90" cream="no"/>
@@ -371,6 +372,24 @@
 <wire x1="-1" y1="-0.6" x2="1" y2="-0.6" width="0.127" layer="21"/>
 </package>
 <package name="SOC70-5-1">
+</package>
+<package name="CON-1PIN-B">
+<pad name="P$1" x="0" y="0" drill="0.9"/>
+</package>
+<package name="SSOP8">
+<description>SSOP-8 Package</description>
+<wire x1="1.1" y1="1.7" x2="1.1" y2="-1.7" width="0.127" layer="21"/>
+<wire x1="1.1" y1="-1.7" x2="-1.1" y2="-1.7" width="0.127" layer="21"/>
+<wire x1="-1.1" y1="-1.7" x2="-1.1" y2="1.7" width="0.127" layer="21"/>
+<wire x1="-1.1" y1="1.7" x2="1.1" y2="1.7" width="0.127" layer="21"/>
+<smd name="P$5" x="0.975" y="1.7" dx="1.55" dy="0.25" layer="1" rot="R90"/>
+<smd name="P$4" x="0.975" y="-1.7" dx="1.55" dy="0.25" layer="1" rot="R90"/>
+<smd name="P$8" x="-0.975" y="1.7" dx="1.55" dy="0.25" layer="1" rot="R90"/>
+<smd name="P$1" x="-0.975" y="-1.7" dx="1.55" dy="0.25" layer="1" rot="R90"/>
+<smd name="P$6" x="0.325" y="1.7" dx="1.55" dy="0.25" layer="1" rot="R90"/>
+<smd name="P$7" x="-0.325" y="1.7" dx="1.55" dy="0.25" layer="1" rot="R90"/>
+<smd name="P$2" x="-0.325" y="-1.7" dx="1.55" dy="0.25" layer="1" rot="R90"/>
+<smd name="P$3" x="0.325" y="-1.7" dx="1.55" dy="0.25" layer="1" rot="R90"/>
 </package>
 </packages>
 <symbols>
@@ -539,6 +558,7 @@
 </symbol>
 <symbol name="CON-1PIN">
 <pin name="P$1" x="-5.08" y="0" length="middle"/>
+<text x="-2.54" y="2.54" size="1.778" layer="95">&gt;NAME</text>
 </symbol>
 <symbol name="NC7SZ04P5X">
 <wire x1="-2.54" y1="2.54" x2="-2.54" y2="-2.54" width="0.254" layer="94"/>
@@ -561,6 +581,20 @@
 <pin name="P$3" x="14.986" y="0" length="middle" rot="R180"/>
 <pin name="P$4" x="5.08" y="8.382" length="middle" rot="R270"/>
 <pin name="P$5" x="7.62" y="8.382" length="middle" rot="R270"/>
+</symbol>
+<symbol name="SN74LVC1G123">
+<wire x1="-5.08" y1="5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-7.62" x2="-5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-7.62" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<pin name="/A" x="-10.16" y="2.54" length="middle"/>
+<pin name="B" x="-10.16" y="0" length="middle"/>
+<pin name="/CLR" x="-10.16" y="-2.54" length="middle"/>
+<pin name="GND" x="-10.16" y="-5.08" length="middle"/>
+<pin name="Q" x="10.16" y="-5.08" length="middle" rot="R180"/>
+<pin name="C" x="10.16" y="-2.54" length="middle" rot="R180"/>
+<pin name="R/C" x="10.16" y="0" length="middle" rot="R180"/>
+<pin name="VCC" x="10.16" y="2.54" length="middle" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -791,6 +825,7 @@
 </devices>
 </deviceset>
 <deviceset name="CON-1PIN" prefix="X">
+<description>THROUGH HOLE FOR 1-PIN CONNECTOR</description>
 <gates>
 <gate name="G$1" symbol="CON-1PIN" x="2.54" y="0"/>
 </gates>
@@ -836,6 +871,43 @@
 <connect gate="G$1" pin="P$3" pad="4"/>
 <connect gate="G$1" pin="P$4" pad="5"/>
 <connect gate="G$1" pin="P$5" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="CON-1PINB" prefix="X">
+<gates>
+<gate name="G$1" symbol="CON-1PIN" x="2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="CON-1PIN-B">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="SN74LVC1G123" prefix="U">
+<gates>
+<gate name="G$1" symbol="SN74LVC1G123" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SSOP8">
+<connects>
+<connect gate="G$1" pin="/A" pad="P$1"/>
+<connect gate="G$1" pin="/CLR" pad="P$3"/>
+<connect gate="G$1" pin="B" pad="P$2"/>
+<connect gate="G$1" pin="C" pad="P$6"/>
+<connect gate="G$1" pin="GND" pad="P$4"/>
+<connect gate="G$1" pin="Q" pad="P$5"/>
+<connect gate="G$1" pin="R/C" pad="P$7"/>
+<connect gate="G$1" pin="VCC" pad="P$8"/>
 </connects>
 <technologies>
 <technology name=""/>
