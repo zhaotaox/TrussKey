@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.2">
+<eagle version="8.4.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -22144,7 +22144,7 @@ Source: AVX .. aphvc.pdf</description>
 <part name="U$20" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$21" library="microbuilder" deviceset="VBAT" device=""/>
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/1"/>
-<part name="R13" library="resistor" deviceset="R-US_" device="R0402" value="330"/>
+<part name="R13" library="resistor" deviceset="R-US_" device="R0402" value="1K"/>
 <part name="U$22" library="microbuilder" deviceset="GND" device=""/>
 <part name="R7" library="resistor" deviceset="R-US_" device="R0402" value="470"/>
 <part name="X4" library="NewPart" deviceset="CON-1PIN" device=""/>
