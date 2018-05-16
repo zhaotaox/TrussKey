@@ -1,5 +1,6 @@
 #include <SoftwareSerial.h>
 #include <avr/sleep.h>
+#include <avr/power.h>
 #include <avr/wdt.h>
 #include "SIM800.h"
 #include "MAX17043.h"
@@ -21,6 +22,7 @@ int BlueLED = 9;
 /*Interrupt pins*/
 const int pwrPin = 3;  
 int detSW_Pin = 2;
+int shutdown_Pin = 4;
 
 
 /*Variables used for MQ303 sensor*/
@@ -46,6 +48,7 @@ uint32_t count = 0;
 uint32_t errors = 0;
 int switchPin = A1;
 int smsSent;
+int sleep_gprs;
 
 unsigned long time;
 
@@ -62,11 +65,11 @@ void setup(){
   pinMode(BlueLED,OUTPUT);
   pinMode(GreenLED,OUTPUT);
   pinMode(RedLED,OUTPUT);
-  pinMode(4,OUTPUT);
+  pinMode(shutdown_Pin,OUTPUT);
 
   pinMode(pwrPin,INPUT);
   attachInterrupt(digitalPinToInterrupt(detSW_Pin),det_SW,RISING);
-  attachInterrupt(digitalPinToInterrupt(pwrPin),pwr_SW,RISING);
+  attachInterrupt(digitalPinToInterrupt(pwrPin),pwr_SW,FALLING);
   //batteryMonitor.reset();
   //batteryMonitor.quickStart();
   //turnLEDOff();
@@ -76,7 +79,7 @@ void setup(){
 void loop()
 {
   turnLEDOff();
-  
+  digitalWrite(shutdown_Pin,LOW);
 //  if (digitalRead(pwrPin)){
 //    readingCounter++;
 //    //con.print("Reading counter");
@@ -115,7 +118,10 @@ void loop()
 //    delay(500);
 //  }
 //  powerOn = 1;
-
+  if (!powerOn){
+    sleepGPRS();
+    sleepNow();
+  }
   /*After power is on*/
   if (powerOn){
     turnBlueOn();
@@ -130,6 +136,7 @@ void loop()
     //con.print(stateOfCharge);
     //con.println("%");
     turnBlueOn();
+    digitalWrite(shutdown_Pin,HIGH);
     digitalWrite(solenoid_Pin,LOW);
     passed = 1;
     int values[15];
@@ -210,7 +217,10 @@ void loop()
       base_val = 0;
       timer = 0;
       turnLEDOff();
+      digitalWrite(shutdown_Pin,LOW);
+      powerOn = 0;
       delay(2000);
+      digitalWrite(solenoid_Pin,LOW);
     }
   }
 }
@@ -241,13 +251,41 @@ void turnGreenOn()
 }
 
 
+// watchdog interrupt
+ISR(WDT_vect) 
+{
+  wdt_disable();  // disable watchdog
+}
+void sleepNow()
+{
+  power_adc_disable(); // Disable ADC before going to sleep
+  set_sleep_mode (SLEEP_MODE_PWR_DOWN);  // Power down sleep mode
+  sleep_enable(); //Enables sleep bit in the MCUCR register
+  attachInterrupt(digitalPinToInterrupt(pwrPin),pwr_SW,RISING);
+  
+  sleep_mode();            // now goes to Sleep and waits for the interrupt
+
+
+  sleep_disable();  //  First thing after waking up  (Comes back to ISR)
+  //detachInterrupt(0);
+}
+
+/*Put gprs to sleep*/
+void sleepGPRS()
+{
+  sleep_gprs = gprs.sleep(1);
+}
+
+
+
 /*Detector switch interrupt routine
   Once pressed, sends out tampering warning message*/
 void det_SW()
 {
   /*Initiate GPRS*/
   interrupts();
-  
+  gprs.sleep(0);
+  delay(500);
   for (;;) {
     while (!gprs.init()) {
     }
