@@ -118,6 +118,7 @@ void loop()
 //    delay(500);
 //  }
 //  powerOn = 1;
+  powerOn = digitalRead(pwrPin);
   if (!powerOn){
     sleepGPRS();
     sleepNow();
@@ -313,7 +314,7 @@ void det_SW()
 void pwr_SW()
 {
   interrupts();
-  powerOn = !powerOn;
+  powerOn = 0;
   timer = 0;
   noInterrupts();
 }
