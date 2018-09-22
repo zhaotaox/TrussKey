@@ -14968,7 +14968,7 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <part name="C17" library="rcl" deviceset="C-EU" device="C0603" value="1uF"/>
 <part name="U$25" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$26" library="microbuilder" deviceset="VBAT" device=""/>
-<part name="R19" library="resistor" deviceset="R-US_" device="R0402" value="470"/>
+<part name="R19" library="resistor" deviceset="R-US_" device="R0402" value="330"/>
 <part name="R8" library="resistor" deviceset="R-US_" device="R0402" value="2K"/>
 </parts>
 <sheets>
