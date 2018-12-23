@@ -4055,7 +4055,6 @@ design rules under a new name.
 <contactref element="R18" pad="2"/>
 <contactref element="U6" pad="3"/>
 <wire x1="29.750096875" y1="7.212075" x2="29.58" y2="7.21" width="0.254" layer="16"/>
-<wire x1="29.625" y1="7.285" x2="29.697925" y2="7.212075" width="0.254" layer="16"/>
 <wire x1="29.697925" y1="7.212075" x2="29.750096875" y2="7.212075" width="0.254" layer="16"/>
 <wire x1="30.80905" y1="7.212075" x2="29.750096875" y2="7.212075" width="0.254" layer="16"/>
 <wire x1="29.58" y1="7.21" x2="28.23" y2="7.21" width="0.254" layer="16"/>
@@ -4139,8 +4138,6 @@ design rules under a new name.
 <approved hash="5,1,e6ca194f352bc25b"/>
 <approved hash="5,1,ce02690406eb54e6"/>
 <approved hash="5,1,3d04960408eb56e0"/>
-<approved hash="5,1,06efae246826a2ee"/>
-<approved hash="5,1,2418eeb028b28019"/>
 <approved hash="5,1,e666264d3713cfcb"/>
 <approved hash="5,1,2614f80402892b90"/>
 <approved hash="5,1,910a4b0400892d8e"/>

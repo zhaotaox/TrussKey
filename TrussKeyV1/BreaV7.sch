@@ -14949,7 +14949,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <part name="U$10" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$11" library="microbuilder" deviceset="GND" device=""/>
 <part name="X4" library="microbuilder" deviceset="USB" device="MICRO_20329" value="MicroB"/>
-<part name="U$12" library="microbuilder" deviceset="VBAT" device=""/>
 <part name="P+12" library="supply1" deviceset="VCC" device=""/>
 <part name="R15" library="resistor" deviceset="R-US_" device="R0402" value="4.7K"/>
 <part name="R16" library="resistor" deviceset="R-US_" device="R0402" value="4.7K"/>
@@ -15644,7 +15643,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <instance part="U$10" gate="G$1" x="41.91" y="94.234"/>
 <instance part="U$11" gate="G$1" x="116.84" y="81.28"/>
 <instance part="X4" gate="G$1" x="25.4" y="104.14"/>
-<instance part="U$12" gate="G$1" x="134.62" y="116.84"/>
 <instance part="P+12" gate="VCC" x="86.36" y="60.96"/>
 <instance part="R15" gate="G$1" x="86.36" y="48.26" rot="R90"/>
 <instance part="R16" gate="G$1" x="104.14" y="43.18" rot="R90"/>
@@ -15735,9 +15733,9 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <wire x1="134.62" y1="109.22" x2="127" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="127" y1="109.22" x2="101.6" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="109.22" x2="134.62" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="U$12" gate="G$1" pin="VBAT"/>
 <pinref part="C16" gate="G$1" pin="1"/>
 <junction x="127" y="109.22"/>
+<label x="134.62" y="114.3" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$16" gate="G$1" pin="VBAT"/>
