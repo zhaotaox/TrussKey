@@ -12915,30 +12915,31 @@ wave soldering</description>
 <wire x1="1.95" y1="1.95" x2="0" y2="1.95" width="0.127" layer="21"/>
 <wire x1="0" y1="1.95" x2="0" y2="0.025" width="0.127" layer="21"/>
 </package>
-<package name="TDFN">
-<smd name="9" x="0" y="0" dx="1.75" dy="1.63" layer="1" rot="R90" cream="no"/>
-<smd name="8" x="-0.75" y="1.45" dx="0.7" dy="0.3" layer="1" rot="R270"/>
-<text x="-1.72" y="-2.25" size="0.8128" layer="25" rot="R90">&gt;NAME</text>
-<text x="2.33" y="-2.26" size="0.8128" layer="27" rot="R90">&gt;VALUE</text>
-<wire x1="-0.9" y1="1.1" x2="0.9" y2="1.1" width="0.127" layer="21"/>
-<wire x1="0.9" y1="1.1" x2="0.9" y2="-1.1" width="0.127" layer="21"/>
-<wire x1="0.9" y1="-1.1" x2="-0.9" y2="-1.1" width="0.127" layer="21"/>
-<wire x1="-0.9" y1="-1.1" x2="-0.9" y2="1.1" width="0.127" layer="21"/>
-<circle x="-1.07" y="-1.154" radius="0.15" width="0.2032" layer="21"/>
-<smd name="1" x="-0.75" y="-1.45" dx="0.7" dy="0.3" layer="1" rot="R270"/>
-<smd name="2" x="-0.25" y="-1.45" dx="0.7" dy="0.3" layer="1" rot="R270"/>
-<smd name="3" x="0.25" y="-1.45" dx="0.7" dy="0.3" layer="1" rot="R270"/>
-<smd name="4" x="0.75" y="-1.45" dx="0.7" dy="0.3" layer="1" rot="R270"/>
-<smd name="5" x="0.75" y="1.45" dx="0.7" dy="0.3" layer="1" rot="R270"/>
-<smd name="6" x="0.25" y="1.45" dx="0.7" dy="0.3" layer="1" rot="R270"/>
-<smd name="7" x="-0.25" y="1.45" dx="0.7" dy="0.3" layer="1" rot="R270"/>
-</package>
 <package name="CON-1PIN">
 <pad name="P$1" x="0" y="0" drill="1" shape="long" rot="R270"/>
 <wire x1="-1.27" y1="2.54" x2="1.27" y2="2.54" width="0.127" layer="21"/>
 <wire x1="1.27" y1="2.54" x2="1.27" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="1.27" y1="-2.54" x2="-1.27" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="-2.54" x2="-1.27" y2="2.54" width="0.127" layer="21"/>
+</package>
+<package name="WDFN8">
+<smd name="6" x="0.325" y="1.495" dx="0.7" dy="0.35" layer="1" rot="R90"/>
+<smd name="9" x="0" y="-0.3" dx="2.56" dy="1.96" layer="1" rot="R90" cream="no"/>
+<smd name="7" x="-0.325" y="1.495" dx="0.7" dy="0.35" layer="1" rot="R90"/>
+<smd name="8" x="-0.975" y="1.495" dx="0.7" dy="0.35" layer="1" rot="R270"/>
+<smd name="5" x="0.975" y="1.495" dx="0.7" dy="0.35" layer="1" rot="R90"/>
+<smd name="1" x="-0.975" y="-2.095" dx="0.7" dy="0.35" layer="1" rot="R90"/>
+<smd name="2" x="-0.325" y="-2.095" dx="0.7" dy="0.35" layer="1" rot="R90"/>
+<smd name="3" x="0.325" y="-2.095" dx="0.7" dy="0.35" layer="1" rot="R90"/>
+<smd name="4" x="0.975" y="-2.095" dx="0.7" dy="0.35" layer="1" rot="R90"/>
+<rectangle x1="-0.875" y1="-0.75" x2="0.875" y2="0.75" layer="31" rot="R180"/>
+<text x="-2.54" y="-2.54" size="0.8128" layer="25" rot="R90">&gt;NAME</text>
+<text x="2.54" y="-2.54" size="0.8128" layer="25" rot="R90">&gt;VALUE</text>
+<wire x1="-1.27" y1="1.016" x2="1.27" y2="1.016" width="0.127" layer="21"/>
+<wire x1="1.27" y1="1.016" x2="1.27" y2="-1.566" width="0.127" layer="21"/>
+<wire x1="1.27" y1="-1.566" x2="-1.27" y2="-1.566" width="0.127" layer="21"/>
+<wire x1="-1.27" y1="-1.566" x2="-1.27" y2="1.016" width="0.127" layer="21"/>
+<circle x="-1.38" y="-1.714" radius="0.15" width="0.2032" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -13018,26 +13019,26 @@ wave soldering</description>
 <pin name="S1" x="0" y="-5.08" visible="pad" length="short" direction="pas" swaplevel="2" rot="R90"/>
 <pin name="S2" x="0" y="5.08" visible="pad" length="short" direction="pas" swaplevel="1" rot="R270"/>
 </symbol>
-<symbol name="MAX1704X">
-<wire x1="-12.7" y1="12.7" x2="7.62" y2="12.7" width="0.254" layer="94"/>
-<wire x1="7.62" y1="12.7" x2="7.62" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="7.62" y1="-12.7" x2="-12.7" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="-12.7" y1="-12.7" x2="-12.7" y2="12.7" width="0.254" layer="94"/>
-<pin name="CTG" x="-17.78" y="10.16" length="middle"/>
-<pin name="CELL" x="-17.78" y="5.08" length="middle"/>
-<pin name="VDD" x="-17.78" y="-5.08" length="middle"/>
-<pin name="GND" x="-17.78" y="-10.16" length="middle"/>
-<pin name="SDA" x="12.7" y="10.16" length="middle" rot="R180"/>
-<pin name="SCL" x="12.7" y="5.08" length="middle" rot="R180"/>
-<pin name="QSTRT" x="12.7" y="-5.08" length="middle" rot="R180"/>
-<pin name="/ALRT" x="12.7" y="-10.16" length="middle" rot="R180"/>
-<pin name="EPAD" x="12.7" y="0" length="middle" rot="R180"/>
-<text x="-12.7" y="15.24" size="1.778" layer="94">&gt;NAME</text>
-<text x="-12.7" y="-17.78" size="1.778" layer="94">&gt;VALUE</text>
-</symbol>
 <symbol name="CON-1PIN">
 <pin name="P$1" x="-5.08" y="0" length="middle"/>
 <text x="-2.54" y="2.54" size="1.778" layer="95">&gt;NAME</text>
+</symbol>
+<symbol name="LC70923F">
+<wire x1="-10.16" y1="12.7" x2="10.16" y2="12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="12.7" x2="10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-12.7" x2="-10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-12.7" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
+<pin name="TEST" x="-15.24" y="10.16" length="middle"/>
+<pin name="VSS" x="-15.24" y="5.08" length="middle"/>
+<pin name="VDD" x="-15.24" y="-5.08" length="middle"/>
+<pin name="ALARMB" x="-15.24" y="-10.16" length="middle"/>
+<pin name="SCL" x="15.24" y="10.16" length="middle" rot="R180"/>
+<pin name="SDA" x="15.24" y="5.08" length="middle" rot="R180"/>
+<pin name="TSENSE" x="15.24" y="-5.08" length="middle" rot="R180"/>
+<pin name="TSW" x="15.24" y="-10.16" length="middle" rot="R180"/>
+<pin name="EPAD" x="15.24" y="0" length="middle" rot="R180"/>
+<text x="-10.16" y="15.24" size="1.778" layer="94">&gt;NAME</text>
+<text x="-10.16" y="-17.78" size="1.778" layer="94">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -13129,29 +13130,6 @@ wave soldering</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="MAX17044" prefix="U">
-<gates>
-<gate name="G$1" symbol="MAX1704X" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="TDFN">
-<connects>
-<connect gate="G$1" pin="/ALRT" pad="5"/>
-<connect gate="G$1" pin="CELL" pad="2"/>
-<connect gate="G$1" pin="CTG" pad="1"/>
-<connect gate="G$1" pin="EPAD" pad="9"/>
-<connect gate="G$1" pin="GND" pad="4"/>
-<connect gate="G$1" pin="QSTRT" pad="6"/>
-<connect gate="G$1" pin="SCL" pad="7"/>
-<connect gate="G$1" pin="SDA" pad="8"/>
-<connect gate="G$1" pin="VDD" pad="3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="CON-1PIN" prefix="X">
 <description>THROUGH HOLE FOR 1-PIN CONNECTOR</description>
 <gates>
@@ -13161,6 +13139,30 @@ wave soldering</description>
 <device name="" package="CON-1PIN">
 <connects>
 <connect gate="G$1" pin="P$1" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LC709203" prefix="U">
+<description>1-cell ON semiconductor gas gauge</description>
+<gates>
+<gate name="U1" symbol="LC70923F" x="0" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="WDFN8">
+<connects>
+<connect gate="U1" pin="ALARMB" pad="4"/>
+<connect gate="U1" pin="EPAD" pad="9"/>
+<connect gate="U1" pin="SCL" pad="8"/>
+<connect gate="U1" pin="SDA" pad="7"/>
+<connect gate="U1" pin="TEST" pad="1"/>
+<connect gate="U1" pin="TSENSE" pad="6"/>
+<connect gate="U1" pin="TSW" pad="5"/>
+<connect gate="U1" pin="VDD" pad="3"/>
+<connect gate="U1" pin="VSS" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -14925,7 +14927,7 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <part name="R5" library="resistor" deviceset="R-US_" device="R0402" value="2.2K"/>
 <part name="C6" library="rcl" deviceset="C-EU" device="C0402" value="4.7uF"/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
-<part name="R7" library="resistor" deviceset="R-US_" device="R0402" value="330"/>
+<part name="R7" library="resistor" deviceset="R-US_" device="R0402" value="1K"/>
 <part name="P+10" library="supply1" deviceset="VCC" device=""/>
 <part name="U1" library="SparkFun-DigitalIC" deviceset="ATMEGA328P_MLF" device="MLF32"/>
 <part name="Q1" library="NewPart" deviceset="ABM-16MHZ" device=""/>
@@ -14950,25 +14952,18 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <part name="U$11" library="microbuilder" deviceset="GND" device=""/>
 <part name="X4" library="microbuilder" deviceset="USB" device="MICRO_20329" value="MicroB"/>
 <part name="P+12" library="supply1" deviceset="VCC" device=""/>
-<part name="R15" library="resistor" deviceset="R-US_" device="R0402" value="4.7K"/>
-<part name="R16" library="resistor" deviceset="R-US_" device="R0402" value="4.7K"/>
-<part name="C15" library="rcl" deviceset="C-EU" device="C0603" value="10nF"/>
-<part name="U$13" library="microbuilder" deviceset="GND" device=""/>
+<part name="R15" library="resistor" deviceset="R-US_" device="R0402" value="10K"/>
+<part name="R16" library="resistor" deviceset="R-US_" device="R0402" value="10K"/>
 <part name="U$14" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$16" library="microbuilder" deviceset="VBAT" device=""/>
 <part name="C16" library="microbuilder" deviceset="CAP_CERAMIC" device="0805-NOOUTLINE" value="10µF"/>
 <part name="U$17" library="microbuilder" deviceset="GND" device=""/>
-<part name="U6" library="NewPart" deviceset="MAX17044" device=""/>
-<part name="R17" library="resistor" deviceset="R-US_" device="R0402" value="1K"/>
-<part name="R18" library="resistor" deviceset="R-US_" device="R0402" value="180"/>
-<part name="U$22" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$23" library="microbuilder" deviceset="GND" device=""/>
-<part name="U$24" library="microbuilder" deviceset="GND" device=""/>
 <part name="C17" library="rcl" deviceset="C-EU" device="C0603" value="1uF"/>
-<part name="U$25" library="microbuilder" deviceset="GND" device=""/>
-<part name="U$26" library="microbuilder" deviceset="VBAT" device=""/>
 <part name="R19" library="resistor" deviceset="R-US_" device="R0402" value="330"/>
 <part name="R8" library="resistor" deviceset="R-US_" device="R0402" value="2K"/>
+<part name="U3" library="NewPart" deviceset="LC709203" device=""/>
+<part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15646,23 +15641,16 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <instance part="P+12" gate="VCC" x="86.36" y="60.96"/>
 <instance part="R15" gate="G$1" x="86.36" y="48.26" rot="R90"/>
 <instance part="R16" gate="G$1" x="104.14" y="43.18" rot="R90"/>
-<instance part="C15" gate="G$1" x="40.64" y="17.78"/>
-<instance part="U$13" gate="G$1" x="48.26" y="7.62"/>
 <instance part="U$14" gate="G$1" x="93.98" y="25.4"/>
-<instance part="U$16" gate="G$1" x="20.32" y="22.86"/>
+<instance part="U$16" gate="G$1" x="25.4" y="25.4"/>
 <instance part="C16" gate="G$1" x="127" y="104.14"/>
 <instance part="U$17" gate="G$1" x="127" y="96.52"/>
-<instance part="U6" gate="G$1" x="66.04" y="27.94"/>
-<instance part="R17" gate="G$1" x="33.02" y="33.02"/>
-<instance part="R18" gate="G$1" x="33.02" y="20.32"/>
-<instance part="U$22" gate="G$1" x="40.64" y="7.62"/>
 <instance part="U$23" gate="G$1" x="43.18" y="35.56"/>
-<instance part="U$24" gate="G$1" x="93.98" y="20.32"/>
-<instance part="C17" gate="G$1" x="45.72" y="30.48"/>
-<instance part="U$25" gate="G$1" x="40.64" y="22.86"/>
-<instance part="U$26" gate="G$1" x="20.32" y="35.56"/>
+<instance part="C17" gate="G$1" x="40.64" y="30.48"/>
 <instance part="R19" gate="G$1" x="57.15" y="104.14" rot="MR180"/>
 <instance part="R8" gate="G$1" x="110.49" y="106.68" rot="MR180"/>
+<instance part="U3" gate="U1" x="63.5" y="27.94"/>
+<instance part="U$1" gate="G$1" x="30.48" y="30.48"/>
 </instances>
 <busses>
 </busses>
@@ -15694,7 +15682,7 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <segment>
 <pinref part="U$14" gate="G$1" pin="GND"/>
 <wire x1="78.74" y1="27.94" x2="93.98" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="U6" gate="G$1" pin="EPAD"/>
+<pinref part="U3" gate="U1" pin="EPAD"/>
 </segment>
 <segment>
 <pinref part="C16" gate="G$1" pin="2"/>
@@ -15702,29 +15690,17 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <wire x1="127" y1="101.6" x2="127" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="48.26" y1="17.78" x2="48.26" y2="10.16" width="0.1524" layer="91"/>
-<pinref part="U6" gate="G$1" pin="GND"/>
-<pinref part="U$13" gate="G$1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="C15" gate="G$1" pin="2"/>
-<pinref part="U$22" gate="G$1" pin="GND"/>
-<wire x1="40.64" y1="12.7" x2="40.64" y2="10.16" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="U$23" gate="G$1" pin="GND"/>
-<pinref part="U6" gate="G$1" pin="CTG"/>
 <wire x1="43.18" y1="38.1" x2="48.26" y2="38.1" width="0.1524" layer="91"/>
+<pinref part="U3" gate="U1" pin="TEST"/>
 </segment>
 <segment>
-<pinref part="U6" gate="G$1" pin="QSTRT"/>
-<pinref part="U$24" gate="G$1" pin="GND"/>
-<wire x1="78.74" y1="22.86" x2="93.98" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C17" gate="G$1" pin="2"/>
-<pinref part="U$25" gate="G$1" pin="GND"/>
-<wire x1="45.72" y1="25.4" x2="40.64" y2="25.4" width="0.1524" layer="91"/>
+<pinref part="U3" gate="U1" pin="VSS"/>
+<pinref part="C17" gate="G$1" pin="1"/>
+<wire x1="48.26" y1="33.02" x2="40.64" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="GND"/>
+<wire x1="40.64" y1="33.02" x2="30.48" y2="33.02" width="0.1524" layer="91"/>
+<junction x="40.64" y="33.02"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -15738,16 +15714,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <label x="134.62" y="114.3" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$16" gate="G$1" pin="VBAT"/>
-<pinref part="R18" gate="G$1" pin="1"/>
-<wire x1="20.32" y1="20.32" x2="27.94" y2="20.32" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="U$26" gate="G$1" pin="VBAT"/>
-<pinref part="R17" gate="G$1" pin="1"/>
-<wire x1="20.32" y1="33.02" x2="27.94" y2="33.02" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="R15" gate="G$1" pin="2"/>
 <pinref part="P+12" gate="VCC" pin="VCC"/>
 <wire x1="86.36" y1="53.34" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
@@ -15756,29 +15722,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <wire x1="104.14" y1="48.26" x2="104.14" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="55.88" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
 <junction x="86.36" y="55.88"/>
-</segment>
-</net>
-<net name="SCL" class="0">
-<segment>
-<wire x1="99.06" y1="33.02" x2="104.14" y2="33.02" width="0.1524" layer="91"/>
-<label x="109.22" y="33.02" size="1.778" layer="95" xref="yes"/>
-<pinref part="R16" gate="G$1" pin="1"/>
-<wire x1="104.14" y1="33.02" x2="109.22" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="33.02" x2="104.14" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="33.02" x2="104.14" y2="38.1" width="0.1524" layer="91"/>
-<junction x="104.14" y="33.02"/>
-<pinref part="U6" gate="G$1" pin="SCL"/>
-</segment>
-</net>
-<net name="SDA" class="0">
-<segment>
-<wire x1="86.36" y1="38.1" x2="91.44" y2="38.1" width="0.1524" layer="91"/>
-<label x="91.44" y="38.1" size="1.778" layer="95" xref="yes"/>
-<pinref part="R15" gate="G$1" pin="1"/>
-<wire x1="78.74" y1="38.1" x2="86.36" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="38.1" x2="86.36" y2="43.18" width="0.1524" layer="91"/>
-<junction x="86.36" y="38.1"/>
-<pinref part="U6" gate="G$1" pin="SDA"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -15803,25 +15746,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <junction x="52.07" y="109.22"/>
 </segment>
 </net>
-<net name="N$13" class="0">
-<segment>
-<pinref part="U6" gate="G$1" pin="CELL"/>
-<pinref part="C17" gate="G$1" pin="1"/>
-<wire x1="45.72" y1="33.02" x2="48.26" y2="33.02" width="0.1524" layer="91"/>
-<pinref part="R17" gate="G$1" pin="2"/>
-<wire x1="38.1" y1="33.02" x2="45.72" y2="33.02" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$15" class="0">
-<segment>
-<pinref part="C15" gate="G$1" pin="1"/>
-<pinref part="R18" gate="G$1" pin="2"/>
-<wire x1="38.1" y1="20.32" x2="40.64" y2="20.32" width="0.1524" layer="91"/>
-<pinref part="U6" gate="G$1" pin="VDD"/>
-<wire x1="40.64" y1="20.32" x2="48.26" y2="20.32" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="20.32" x2="48.26" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$16" class="0">
 <segment>
 <pinref part="R19" gate="G$1" pin="2"/>
@@ -15834,6 +15758,35 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="CHRG1" gate="G$1" pin="C"/>
 <pinref part="U5" gate="G$1" pin="STAT"/>
 <wire x1="72.39" y1="104.14" x2="76.2" y2="104.14" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SCL" class="0">
+<segment>
+<pinref part="U3" gate="U1" pin="SCL"/>
+<pinref part="R15" gate="G$1" pin="1"/>
+<wire x1="78.74" y1="38.1" x2="86.36" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="38.1" x2="86.36" y2="43.18" width="0.1524" layer="91"/>
+<label x="86.36" y="38.1" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SDA" class="0">
+<segment>
+<pinref part="U3" gate="U1" pin="SDA"/>
+<pinref part="R16" gate="G$1" pin="1"/>
+<wire x1="78.74" y1="33.02" x2="104.14" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="33.02" x2="104.14" y2="38.1" width="0.1524" layer="91"/>
+<label x="104.14" y="33.02" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="VBAT" class="0">
+<segment>
+<pinref part="U3" gate="U1" pin="VDD"/>
+<wire x1="48.26" y1="22.86" x2="40.64" y2="22.86" width="0.1524" layer="91"/>
+<pinref part="U$16" gate="G$1" pin="VBAT"/>
+<wire x1="40.64" y1="22.86" x2="25.4" y2="22.86" width="0.1524" layer="91"/>
+<pinref part="C17" gate="G$1" pin="2"/>
+<wire x1="40.64" y1="25.4" x2="40.64" y2="22.86" width="0.1524" layer="91"/>
+<junction x="40.64" y="22.86"/>
 </segment>
 </net>
 </nets>
