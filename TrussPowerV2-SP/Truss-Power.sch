@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.2.2">
+<eagle version="9.1.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -10844,7 +10844,6 @@ Source: www.kingbright.com</description>
 <part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$4" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$19" library="microbuilder" deviceset="GND" device=""/>
-<part name="R12" library="resistor" deviceset="R-US_" device="R0402" value="4.7K"/>
 <part name="C5" library="rcl" deviceset="C-EU" device="C0603" value="1uF"/>
 <part name="U$20" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$21" library="microbuilder" deviceset="VBAT" device=""/>
@@ -10854,7 +10853,6 @@ Source: www.kingbright.com</description>
 <part name="R7" library="resistor" deviceset="R-US_" device="R0402" value="470"/>
 <part name="U$9" library="microbuilder" deviceset="VBAT" device=""/>
 <part name="U$10" library="microbuilder" deviceset="VBAT" device=""/>
-<part name="U$11" library="microbuilder" deviceset="VBAT" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -10983,10 +10981,6 @@ Source: www.kingbright.com</description>
 <instance part="U$19" gate="G$1" x="203.2" y="55.88" smashed="yes">
 <attribute name="VALUE" x="201.676" y="53.34" size="1.27" layer="96"/>
 </instance>
-<instance part="R12" gate="G$1" x="218.44" y="53.34" smashed="yes" rot="R180">
-<attribute name="NAME" x="222.25" y="51.8414" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="222.25" y="56.642" size="1.778" layer="96" rot="R180"/>
-</instance>
 <instance part="C5" gate="G$1" x="154.94" y="66.04" smashed="yes">
 <attribute name="NAME" x="156.464" y="66.421" size="1.778" layer="95"/>
 <attribute name="VALUE" x="156.464" y="61.341" size="1.778" layer="96"/>
@@ -11017,9 +11011,6 @@ Source: www.kingbright.com</description>
 </instance>
 <instance part="U$10" gate="G$1" x="213.36" y="88.9" smashed="yes">
 <attribute name="VALUE" x="211.836" y="89.916" size="1.27" layer="96"/>
-</instance>
-<instance part="U$11" gate="G$1" x="228.6" y="58.42" smashed="yes">
-<attribute name="VALUE" x="227.076" y="59.436" size="1.27" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -11150,12 +11141,6 @@ Source: www.kingbright.com</description>
 <wire x1="213.36" y1="83.82" x2="213.36" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R12" gate="G$1" pin="1"/>
-<pinref part="U$11" gate="G$1" pin="VBAT"/>
-<wire x1="223.52" y1="53.34" x2="228.6" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="228.6" y1="53.34" x2="228.6" y2="55.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="X3" gate="-2" pin="S"/>
 <wire x1="96.52" y1="22.86" x2="91.44" y2="22.86" width="0.1524" layer="91"/>
 <label x="91.44" y="22.86" size="1.778" layer="95" rot="R180"/>
@@ -11226,18 +11211,6 @@ Source: www.kingbright.com</description>
 <pinref part="U3" gate="G$1" pin="VDD"/>
 <wire x1="149.86" y1="55.88" x2="157.48" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="55.88" x2="157.48" y2="58.42" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="ALRT" class="0">
-<segment>
-<pinref part="U3" gate="G$1" pin="/ALRT"/>
-<pinref part="R12" gate="G$1" pin="2"/>
-<wire x1="187.96" y1="53.34" x2="213.36" y2="53.34" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="J1" gate="-2" pin="MS"/>
-<wire x1="60.96" y1="20.32" x2="55.88" y2="20.32" width="0.1524" layer="91"/>
-<label x="50.8" y="20.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LEDSOC" class="0">
