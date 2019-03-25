@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.1.3">
+<eagle version="9.2.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -10991,13 +10991,13 @@ Source: www.kingbright.com</description>
 <instance part="U$21" gate="G$1" x="129.54" y="71.12" smashed="yes">
 <attribute name="VALUE" x="128.016" y="72.136" size="1.27" layer="96"/>
 </instance>
-<instance part="LED1" gate="G$1" x="27.94" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="32.512" y="46.736" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="32.512" y="48.895" size="1.778" layer="96" rot="R180"/>
+<instance part="LED1" gate="G$1" x="45.72" y="43.18" smashed="yes" rot="R90">
+<attribute name="NAME" x="50.292" y="46.736" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="50.292" y="48.895" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="R13" gate="G$1" x="43.18" y="43.18" smashed="yes" rot="R180">
-<attribute name="NAME" x="46.99" y="41.6814" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="46.99" y="46.482" size="1.778" layer="96" rot="R180"/>
+<instance part="R13" gate="G$1" x="33.02" y="43.18" smashed="yes" rot="R180">
+<attribute name="NAME" x="36.83" y="41.6814" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="36.83" y="46.482" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="U$22" gate="G$1" x="55.88" y="38.1" smashed="yes">
 <attribute name="VALUE" x="54.356" y="35.56" size="1.27" layer="96"/>
@@ -11086,10 +11086,10 @@ Source: www.kingbright.com</description>
 <wire x1="154.94" y1="60.96" x2="149.86" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R13" gate="G$1" pin="1"/>
 <pinref part="U$22" gate="G$1" pin="GND"/>
-<wire x1="48.26" y1="43.18" x2="55.88" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="43.18" x2="55.88" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="LED1" gate="G$1" pin="C"/>
+<wire x1="55.88" y1="43.18" x2="50.8" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$14" class="0">
@@ -11220,16 +11220,9 @@ Source: www.kingbright.com</description>
 <label x="50.8" y="22.86" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="25.4" y1="43.18" x2="20.32" y2="43.18" width="0.1524" layer="91"/>
-<label x="20.32" y="43.18" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="LED1" gate="G$1" pin="A"/>
-</segment>
-</net>
-<net name="N$4" class="0">
-<segment>
-<pinref part="LED1" gate="G$1" pin="C"/>
 <pinref part="R13" gate="G$1" pin="2"/>
-<wire x1="33.02" y1="43.18" x2="38.1" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="43.18" x2="20.32" y2="43.18" width="0.1524" layer="91"/>
+<label x="20.32" y="43.18" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -11244,6 +11237,13 @@ Source: www.kingbright.com</description>
 <pinref part="CHRG" gate="G$1" pin="C"/>
 <pinref part="U2" gate="G$1" pin="STAT"/>
 <wire x1="66.04" y1="76.2" x2="68.58" y2="76.2" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="LED1" gate="G$1" pin="A"/>
+<pinref part="R13" gate="G$1" pin="1"/>
+<wire x1="43.18" y1="43.18" x2="38.1" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
