@@ -12724,6 +12724,7 @@ wave soldering</description>
 <pad name="P$1" x="-2.5" y="0" drill="1"/>
 <pad name="P$2" x="2.5" y="0" drill="1"/>
 <text x="-2.54" y="1.27" size="1.27" layer="25">&gt;NAME</text>
+<pad name="P$3" x="-2.5" y="0" drill="1"/>
 </package>
 <package name="TPS62200">
 <wire x1="1.422" y1="0.81" x2="1.422" y2="-0.81" width="0.1524" layer="21"/>
@@ -12763,7 +12764,7 @@ wave soldering</description>
 <wire x1="0" y1="1.95" x2="0" y2="0.025" width="0.127" layer="21"/>
 </package>
 <package name="CON-1PIN">
-<pad name="P$1" x="0" y="0" drill="1" shape="long" rot="R270"/>
+<pad name="P$1" x="0" y="0" drill="1" shape="long" rot="R270" thermals="no"/>
 <wire x1="-1.27" y1="2.54" x2="1.27" y2="2.54" width="0.127" layer="21"/>
 <wire x1="1.27" y1="2.54" x2="1.27" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="1.27" y1="-2.54" x2="-1.27" y2="-2.54" width="0.127" layer="21"/>
@@ -14381,6 +14382,68 @@ Source: &lt;a href="https://www.mouser.de/datasheet/2/18/10104111-1361291.pdf"&g
 </deviceset>
 </devicesets>
 </library>
+<library name="5-146280-1">
+<description>&lt;AMP - TE CONNECTIVITY - 5-146280-1 - 01 MODII HDR SRST B/A LF&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="HDRV1W67P0X254_1X1_213X234X821">
+<description>&lt;b&gt;5-146280-1&lt;/b&gt;&lt;br&gt;
+</description>
+<pad name="1" x="0" y="0" drill="1.15" diameter="1.725" shape="square" thermals="no"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-1.315" y1="-1.42" x2="-1.315" y2="1.42" width="0.05" layer="51"/>
+<wire x1="-1.315" y1="1.42" x2="1.315" y2="1.42" width="0.05" layer="51"/>
+<wire x1="1.315" y1="1.42" x2="1.315" y2="-1.42" width="0.05" layer="51"/>
+<wire x1="1.315" y1="-1.42" x2="-1.315" y2="-1.42" width="0.05" layer="51"/>
+<wire x1="-1.065" y1="-1.17" x2="-1.065" y2="1.17" width="0.1" layer="51"/>
+<wire x1="-1.065" y1="1.17" x2="1.065" y2="1.17" width="0.1" layer="51"/>
+<wire x1="1.065" y1="1.17" x2="1.065" y2="-1.17" width="0.1" layer="51"/>
+<wire x1="1.065" y1="-1.17" x2="-1.065" y2="-1.17" width="0.1" layer="51"/>
+<wire x1="-1.212" y1="0" x2="-1.212" y2="-1.17" width="0.2" layer="21"/>
+<wire x1="-1.212" y1="-1.17" x2="1.213" y2="-1.17" width="0.2" layer="21"/>
+<wire x1="1.213" y1="-1.17" x2="1.213" y2="1.17" width="0.2" layer="21"/>
+<wire x1="1.213" y1="1.17" x2="0" y2="1.17" width="0.2" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="5-146280-1">
+<wire x1="5.08" y1="2.54" x2="15.24" y2="2.54" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-2.54" x2="15.24" y2="2.54" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<text x="16.51" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="16.51" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="1" x="0" y="0" length="middle"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="5-146280-1" prefix="J">
+<description>&lt;b&gt;AMP - TE CONNECTIVITY - 5-146280-1 - 01 MODII HDR SRST B/A LF&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://componentsearchengine.com/Datasheets/1/5-146280-1.pdf"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="5-146280-1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="HDRV1W67P0X254_1X1_213X234X821">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DESCRIPTION" value="AMP - TE CONNECTIVITY - 5-146280-1 - 01 MODII HDR SRST B/A LF" constant="no"/>
+<attribute name="HEIGHT" value="8.21mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="TE Connectivity" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="5-146280-1" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="571-51462801" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.com/Search/Refine.aspx?Keyword=571-51462801" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -14464,8 +14527,8 @@ Source: &lt;a href="https://www.mouser.de/datasheet/2/18/10104111-1361291.pdf"&g
 <part name="P+11" library="supply1" deviceset="VCC" device=""/>
 <part name="J1" library="M20-9980346" library_urn="urn:adsk.eagle:library:10158210" deviceset="M20-9980346" device="" package3d_urn="urn:adsk.eagle:package:10158213/3"/>
 <part name="J3" library="10104111-0001LF" library_urn="urn:adsk.eagle:library:10158429" deviceset="10104111-0001LF" device="" package3d_urn="urn:adsk.eagle:package:10158432/2"/>
-<part name="X2" library="NewPart" deviceset="CON-1PIN" device=""/>
-<part name="X4" library="NewPart" deviceset="CON-1PIN" device=""/>
+<part name="J4" library="5-146280-1" deviceset="5-146280-1" device=""/>
+<part name="J5" library="5-146280-1" deviceset="5-146280-1" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15090,8 +15153,14 @@ Source: &lt;a href="https://www.mouser.de/datasheet/2/18/10104111-1361291.pdf"&g
 <instance part="X3" gate="G$1" x="226.06" y="83.82" smashed="yes">
 <attribute name="NAME" x="223.52" y="86.36" size="1.778" layer="95"/>
 </instance>
-<instance part="X2" gate="G$1" x="35.56" y="78.74" smashed="yes" rot="R180"/>
-<instance part="X4" gate="G$1" x="35.56" y="76.2" smashed="yes" rot="R180"/>
+<instance part="J4" gate="G$1" x="38.1" y="83.82" smashed="yes" rot="R180">
+<attribute name="NAME" x="21.59" y="76.2" size="1.778" layer="95" rot="R180" align="center-left"/>
+<attribute name="VALUE" x="21.59" y="78.74" size="1.778" layer="96" rot="R180" align="center-left"/>
+</instance>
+<instance part="J5" gate="G$1" x="38.1" y="76.2" smashed="yes" rot="R180">
+<attribute name="NAME" x="21.59" y="68.58" size="1.778" layer="95" rot="R180" align="center-left"/>
+<attribute name="VALUE" x="21.59" y="71.12" size="1.778" layer="96" rot="R180" align="center-left"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -15099,14 +15168,13 @@ Source: &lt;a href="https://www.mouser.de/datasheet/2/18/10104111-1361291.pdf"&g
 <net name="VCC" class="0">
 <segment>
 <pinref part="P+8" gate="VCC" pin="VCC"/>
-<wire x1="40.64" y1="78.74" x2="48.26" y2="78.74" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="78.74" x2="48.26" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="83.82" x2="48.26" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="C"/>
 <wire x1="48.26" y1="83.82" x2="48.26" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="81.28" x2="58.42" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="83.82" x2="48.26" y2="83.82" width="0.1524" layer="91"/>
 <junction x="48.26" y="83.82"/>
-<pinref part="X2" gate="G$1" pin="P$1"/>
+<pinref part="J4" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="P+9" gate="VCC" pin="VCC"/>
@@ -15174,13 +15242,13 @@ Source: &lt;a href="https://www.mouser.de/datasheet/2/18/10104111-1361291.pdf"&g
 <net name="N$9" class="0">
 <segment>
 <pinref part="Q2" gate="G$1" pin="C"/>
-<wire x1="40.64" y1="76.2" x2="48.26" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="76.2" x2="48.26" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="76.2" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="58.42" y1="76.2" x2="58.42" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="73.66" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
 <junction x="48.26" y="73.66"/>
-<pinref part="X4" gate="G$1" pin="P$1"/>
+<pinref part="J5" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$10" class="0">
